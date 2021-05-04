@@ -1,0 +1,99 @@
+﻿@using ECommercial.Entities.Concrete
+@model List<Product>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/AdministratorArea/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title"><strong>Ürünler</strong></h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div id="example1_filter" class="dataTables_filter"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <table id="example" class="display" style="width:100%">
+                        <thead>
+                            <tr role="row">
+                                <th></th>
+                                <th>Ürün Adı</th>
+                                <th>Kategori</th>
+                                <th>Fiyat</th>
+                                <th>Stok Miktarı</th>
+                                <th>İndirim %</th>
+                                <th>Stok Durumu</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var product in Model)
+                            {
+                                <tr>
+                                    <td>@product.Image</td>
+                                    <td @*class="dtr-control sorting_1" tabindex="0"*@>@product.Name</td>
+                                    <td>@product.Category.Name</td>
+                                    <td>@product.UnitPrice</td>
+                                    <td>@product.UnitsInStock</td>
+                                    <td>@product.PercentOfDiscount</td>
+                                    <td>
+                                        @if (!product.StockStatus)
+                                        {
+                                            <span class="badge badge-warning">Stok Az</span>
+                                        }
+                                        else if (product.UnitsInStock == 0)
+                                        {
+                                            <span class="badge badge-danger">Stok Yok</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge badge-success">Stok Var</span>
+                                        }
+                                    </td>
+                                    <th class="text-center">
+                                        <a class="btn btn-outline-warning btn-sm" href="/AdministratorArea/Products/UpdateProduct/@product.Id">Güncelle</a>
+                                        @if (!product.Status)
+                                        {
+                                            <a class="btn btn-outline-info" href="/AdministratorArea/Products/ChangeStatus/@product.Id">Ekle</a>
+                                        }
+                                        else
+                                        {
+                                            <a class="btn btn-outline-danger btn-sm" href="/AdministratorArea/Products/ChangeStatus/@product.Id">Kaldır</a>
+                                        }
+                                    </th>
+                                </tr>
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th rowspan="1" colspan="1"></th>
+                                <th rowspan="1" colspan="1">Ürün Adı</th>
+                                <th rowspan="1" colspan="1">Kategori</th>
+                                <th rowspan="1" colspan="1">Fiyat</th>
+                                <th rowspan="1" colspan="1">Stok Miktarı</th>
+                                <th rowspan="1" colspan="1">İndirim %</th>
+                                <th rowspan="1" colspan="1">Stok Durumu</th>
+                                <th></th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.card-body -->
+</div>
+
+
+
+
+
+
+
+
