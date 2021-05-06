@@ -1,0 +1,30 @@
+﻿@using ECommercial.Entities.Concrete
+@model Category
+@{
+    ViewBag.Title = "AddCategory";
+    Layout = "~/Areas/AdministratorArea/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<div class="card card-info">
+    <div class="card-header">
+        <h3 class="card-title">Kategori Ekle</h3>
+    </div>
+    <div class="card-body shadow">
+        <form method="post">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-book-open"></i></span>
+                </div>
+                @Html.TextBoxFor(x => x.Name, new { @class = "form-control", @placeholder = "Kategori Adı", @type = "text" })
+            </div>
+            <button type="submit" class="btn btn-block btn-outline-info">Kaydet</button>
+        </form>
+    </div>
+    <!-- /.card-body -->
+</div>
+
+
+
+

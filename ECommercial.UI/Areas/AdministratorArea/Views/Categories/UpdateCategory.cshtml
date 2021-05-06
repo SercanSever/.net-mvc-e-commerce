@@ -1,0 +1,29 @@
+﻿@using ECommercial.Entities.Concrete
+@model Category
+@{
+    ViewBag.Title = "UpdateCategory";
+    Layout = "~/Areas/AdministratorArea/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+@using (Html.BeginForm("UpdateCategory", "Categories", FormMethod.Post))
+{
+    @Html.HiddenFor(x => x.Id)
+    <div class="card card-info">
+        <div class="card-header">
+            <h3 class="card-title">@Model.Name - Güncelle</h3>
+        </div>
+        <div class="card-body shadow">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-book-open"></i></span>
+                </div>
+                @Html.TextBoxFor(x => x.Name, new { @class = "form-control", @value = "@Model.Name", @type = "text" })
+            </div>
+            <button type="submit" class="btn btn-block btn-outline-warning">Güncelle</button>
+        </div>
+    </div>
+}
+
+
+

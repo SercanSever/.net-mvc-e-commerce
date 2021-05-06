@@ -17,6 +17,6 @@ namespace ECommercial.Entities.Concrete
         [Column(TypeName = "NVarChar")]
         public string Name { get; set; }
         public bool Status { get; set; }
-        public List<Product> Products { get; set; }
+        public virtual List<Product> Products { get; set; }
     }
 }

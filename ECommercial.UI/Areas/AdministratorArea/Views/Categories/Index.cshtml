@@ -1,0 +1,64 @@
+﻿@using ECommercial.Entities.Concrete
+@model List<Category>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/AdministratorArea/Views/Shared/_AdminLayout.cshtml";
+}
+
+<table id="table" class="row-border hover order-column" style="width:100%">
+    <thead>
+        <tr>
+            <th>Ad</th>
+            <th>Ürün Sayısı</th>
+            <th>Durumu</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var category in Model)
+        {
+            <tr>
+                <td>@category.Name</td>
+                <td>
+                    @if (category.Products.Count < 10)
+                    {
+                        <span class="badge bg-danger">@category.Products.Count</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-primary">@category.Products.Count</span>
+                    }
+                </td>
+                @if (category.Status)
+                {
+                    <td><img src="~/Uploads/green.png" style="width:20px;" /></td>
+                }
+                else
+                {
+                    <td><img src="~/Uploads/red.png" style="width:20px;" /></td>
+                }
+                <td class="text-right">
+                    <a class="btn btn-outline-warning btn-sm" href="/AdministratorArea/Categories/UpdateCategory/@category.Id">Güncelle</a>
+                    @if (!category.Status)
+                    {
+                        <a class="btn btn-outline-info" href="/AdministratorArea/Categories/ChangeStatus/@category.Id">Ekle</a>
+                    }
+                    else
+                    {
+                        <a class="btn btn-outline-danger btn-sm" href="/AdministratorArea/Categories/ChangeStatus/@category.Id">Kaldır</a>
+                    }
+                </td>
+            </tr>
+        }
+
+    </tbody>
+    <tfoot>
+        <tr>
+            <th>Ad</th>
+            <th>Ürün Sayısı</th>
+            <th>Durumu</th>
+            <th></th>
+        </tr>
+    </tfoot>
+</table>
+

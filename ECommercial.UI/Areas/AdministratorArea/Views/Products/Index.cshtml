@@ -19,7 +19,7 @@
             </div>
             <div class="row">
                 <div class="col-sm-12">
-                    <table id="example" class="display" style="width:100%">
+                    <table id="table" class="display" style="width:100%">
                         <thead>
                             <tr role="row">
                                 <th>Ürün Adı</th>
@@ -28,6 +28,7 @@
                                 <th>Stok Miktarı</th>
                                 <th>İndirim %</th>
                                 <th>Stok Durumu</th>
+                                <th>Durumu</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -53,8 +54,15 @@
                                         {
                                             <span class="badge badge-success">Stok Var</span>
                                         }
-                                    </td>
-                                    <th class="text-center">
+                                    </td> @if (product.Status)
+                                    {
+                                        <td><img src="~/Uploads/green.png" style="width:20px;" /></td>
+                                    }
+                                    else
+                                    {
+                                        <td><img src="~/Uploads/red.png" style="width:20px;" /></td>
+                                    }
+                                    <td class="text-right">
                                         <a class="btn btn-outline-secondary" href="/AdministratorArea/Products/AddImage/@product.Id">Görsel</a>
                                         <a class="btn btn-outline-warning btn-sm" href="/AdministratorArea/Products/UpdateProduct/@product.Id">Güncelle</a>
                                         @if (!product.Status)
@@ -65,7 +73,7 @@
                                         {
                                             <a class="btn btn-outline-danger btn-sm" href="/AdministratorArea/Products/ChangeStatus/@product.Id">Kaldır</a>
                                         }
-                                    </th>
+                                    </td>
                                 </tr>
                             }
                         </tbody>
@@ -77,6 +85,7 @@
                                 <th rowspan="1" colspan="1">Stok Miktarı</th>
                                 <th rowspan="1" colspan="1">İndirim %</th>
                                 <th rowspan="1" colspan="1">Stok Durumu</th>
+                                <th rowspan="1" colspan="1">Durumu</th>
                                 <th></th>
                             </tr>
                         </tfoot>

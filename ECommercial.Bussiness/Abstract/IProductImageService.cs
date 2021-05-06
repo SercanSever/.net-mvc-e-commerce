@@ -1,5 +1,6 @@
 ﻿using ECommercial.Core.Utilities.Results;
 using ECommercial.Entities.Concrete;
+using ECommercial.Entities.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -5,6 +5,7 @@ using ECommercial.Core.Utilities.Results;
 using ECommercial.DataAccess.Abstract;
 using ECommercial.DataAccess.Context;
 using ECommercial.Entities.Concrete;
+using ECommercial.Entities.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -49,6 +50,11 @@ namespace ECommercial.Bussiness.Concrete
         public IDataResult<Product> GetById(int productId)
         {
             return new SuccessDataResult<Product>(_productDal.Get(x => x.Id == productId));
+        }
+
+        public IDataResult<List<ProductWithImageDto>> GetProductWithImage()
+        {
+            return new SuccessDataResult<List<ProductWithImageDto>>(_productDal.GetProductWithImage());
         }
 
         public IResult Update(Product product)

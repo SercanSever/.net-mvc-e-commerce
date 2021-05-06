@@ -58,6 +58,9 @@
                     <a href="/AdministratorArea/Home/Index" class="nav-link">Ana Sayfa</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
+                    <a href="/AdministratorArea/Categories/Index" class="nav-link">Kategoriler</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
                     <a href="/AdministratorArea/Products/Index" class="nav-link">Ürünler</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
@@ -278,13 +281,13 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="pages/charts/chartjs.html" class="nav-link">
+                                    <a href="/AdministratorArea/Categories/Index" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Tüm Kategoriler</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="pages/charts/flot.html" class="nav-link">
+                                    <a href="/AdministratorArea/Categories/AddCategory" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Kategori Ekle</p>
                                     </a>
@@ -639,7 +642,7 @@
     <script>
         $(document).ready(function () {
             // Create DataTable
-            var table = $('#example').DataTable({
+            var table = $('#table').DataTable({
                 dom: 'Pfrtip',
             });
 

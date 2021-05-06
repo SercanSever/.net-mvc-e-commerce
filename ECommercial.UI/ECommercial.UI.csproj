@@ -2492,6 +2492,9 @@
     <Content Include="Areas\AdministratorArea\Views\Products\UpdateProduct.cshtml" />
     <Content Include="Areas\AdministratorArea\Views\Products\AddProduct.cshtml" />
     <Content Include="Areas\AdministratorArea\Views\Products\AddImage.cshtml" />
+    <Content Include="Areas\AdministratorArea\Views\Categories\Index.cshtml" />
+    <Content Include="Areas\AdministratorArea\Views\Categories\UpdateCategory.cshtml" />
+    <Content Include="Areas\AdministratorArea\Views\Categories\AddCategory.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2503,7 +2506,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Uploads\green.png" />
     <Content Include="Uploads\no-image-icon-4.png" />
+    <Content Include="Uploads\red.png" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -2518,7 +2523,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\AdministratorArea\Views\Categories\" />
     <Folder Include="Areas\ECommercial\Controllers\" />
     <Folder Include="Areas\ECommercial\Data\" />
     <Folder Include="Areas\ECommercial\Views\Shared\" />

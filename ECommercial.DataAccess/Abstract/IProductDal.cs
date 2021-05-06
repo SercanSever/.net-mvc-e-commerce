@@ -1,5 +1,6 @@
 ﻿using ECommercial.Core.DataAccess.EntityFramework;
 using ECommercial.Entities.Concrete;
+using ECommercial.Entities.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,6 @@ namespace ECommercial.DataAccess.Abstract
 {
     public interface IProductDal : IEntityRepository<Product>
     {
+        List<ProductWithImageDto> GetProductWithImage();
     }
 }
