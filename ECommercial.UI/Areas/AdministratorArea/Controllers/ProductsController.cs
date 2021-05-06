@@ -9,10 +9,12 @@ namespace ECommercial.UI.Areas.AdministratorArea.Controllers
     public class ProductsController : Controller
     {
         private IProductService _productService;
+        private IProductImageService _productImageService;
 
-        public ProductsController(IProductService productService)
+        public ProductsController(IProductService productService, IProductImageService productImageService)
         {
             _productService = productService;
+            _productImageService = productImageService;
         }
         [HttpGet]
         public ActionResult Index()
@@ -70,6 +72,25 @@ namespace ECommercial.UI.Areas.AdministratorArea.Controllers
             result.Data.Status = !result.Data.Status;
             _productService.Update(result.Data);
             return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public ActionResult AddImage(int id)
+        {
+            var result = _productService.GetById(id);
+            if (result.Success)
+            {
+                return View(result.Data);
+            }
+            throw new Exception(result.Message);
+        }
+        [HttpPost]
+        public ActionResult AddImage(Product product)
+        {
+            if (Request.Files.Count > 0 && !string.IsNullOrWhiteSpace(Request.Files[0].FileName))
+            {
+                _productImageService.Add(Request.Files, product);
+            }
+            return RedirectToAction("AddImage", new { @id = product.Id });
         }
 
     }

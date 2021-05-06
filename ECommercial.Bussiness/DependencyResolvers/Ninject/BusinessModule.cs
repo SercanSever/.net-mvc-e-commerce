@@ -27,6 +27,9 @@ namespace ECommercial.Bussiness.DependencyResolvers.Ninject
 
             Bind<IUserService>().To<UserManager>();
             Bind<IUserDal>().To<EfUserDal>();
+
+            Bind<IProductImageService>().To<ProductImageManager>();
+            Bind<IProductImageDal>().To<EfProductImageDal>();
         }
     }
 }

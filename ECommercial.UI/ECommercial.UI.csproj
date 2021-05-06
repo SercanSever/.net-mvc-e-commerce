@@ -2491,6 +2491,7 @@
     <Content Include="Areas\AdministratorArea\Views\Products\Index.cshtml" />
     <Content Include="Areas\AdministratorArea\Views\Products\UpdateProduct.cshtml" />
     <Content Include="Areas\AdministratorArea\Views\Products\AddProduct.cshtml" />
+    <Content Include="Areas\AdministratorArea\Views\Products\AddImage.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2502,6 +2503,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Uploads\no-image-icon-4.png" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

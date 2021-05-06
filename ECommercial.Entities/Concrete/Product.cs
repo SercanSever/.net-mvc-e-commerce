@@ -11,6 +11,9 @@ namespace ECommercial.Entities.Concrete
 {
     public class Product : IEntity
     {
+        public Product()
+        {
+        }
         [Key]
         public int Id { get; set; }
         [StringLength(60)]
@@ -20,12 +23,10 @@ namespace ECommercial.Entities.Concrete
         public int UnitsInStock { get; set; }
         public bool StockStatus { get; set; }
         public int PercentOfDiscount { get; set; }
-        [StringLength(500)]
-        [Column(TypeName = "NVarChar")]
-        public string Image { get; set; }
         public bool Status { get; set; }
 
         public int CategoryId { get; set; }
         public virtual Category Category { get; set; }
+        public virtual List<ProductImage> ProductImages { get; set; }
     }
 }

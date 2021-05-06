@@ -3,6 +3,7 @@ using ECommercial.Bussiness.Constants;
 using ECommercial.Core.Utilities.Business;
 using ECommercial.Core.Utilities.Results;
 using ECommercial.DataAccess.Abstract;
+using ECommercial.DataAccess.Context;
 using ECommercial.Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -37,6 +38,11 @@ namespace ECommercial.Bussiness.Concrete
         public IDataResult<List<Product>> GetAll()
         {
             var result = _productDal.GetAll();
+            return new SuccessDataResult<List<Product>>(result, Messages.ProductsListed);
+        }
+        public IDataResult<List<Product>> GetAllWithPhotos()
+        {
+            var result = _productDal.GetAll().Distinct().ToList();
             return new SuccessDataResult<List<Product>>(result, Messages.ProductsListed);
         }
 
