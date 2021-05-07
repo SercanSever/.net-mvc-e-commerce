@@ -19,7 +19,7 @@ namespace ECommercial.UI.Areas.AdministratorArea.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            var result = _productService.GetAll();
+            var result = _productService.GetProductWithImages();
             if (result.Success)
             {
                 return View(result.Data);

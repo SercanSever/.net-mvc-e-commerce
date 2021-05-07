@@ -1,5 +1,5 @@
-﻿@using ECommercial.Entities.Concrete
-@model List<Product>
+﻿@using ECommercial.Entities.Dtos
+@model List<ProductWithImageDto>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/AdministratorArea/Views/Shared/_AdminLayout.cshtml";
@@ -22,6 +22,7 @@
                     <table id="table" class="display" style="width:100%">
                         <thead>
                             <tr role="row">
+                                <th></th>
                                 <th>Ürün Adı</th>
                                 <th>Kategori</th>
                                 <th>Fiyat</th>
@@ -36,8 +37,9 @@
                             @foreach (var product in Model)
                             {
                                 <tr>
+                                    <td><img src="~/Uploads/@product.Image" alt="Alternate Text" style="width:30px;" /></td>
                                     <td>@product.Name</td>
-                                    <td>@product.Category.Name</td>
+                                    <td>@product.CategoryName</td>
                                     <td>@product.UnitPrice</td>
                                     <td>@product.UnitsInStock</td>
                                     <td>@product.PercentOfDiscount</td>
@@ -63,15 +65,15 @@
                                         <td><img src="~/Uploads/red.png" style="width:20px;" /></td>
                                     }
                                     <td class="text-right">
-                                        <a class="btn btn-outline-secondary" href="/AdministratorArea/Products/AddImage/@product.Id">Görsel</a>
-                                        <a class="btn btn-outline-warning btn-sm" href="/AdministratorArea/Products/UpdateProduct/@product.Id">Güncelle</a>
+                                        <a class="btn btn-outline-secondary" href="/AdministratorArea/Products/AddImage/@product.ProductId">Görsel</a>
+                                        <a class="btn btn-outline-warning btn-sm" href="/AdministratorArea/Products/UpdateProduct/@product.ProductId">Güncelle</a>
                                         @if (!product.Status)
                                         {
-                                            <a class="btn btn-outline-info" href="/AdministratorArea/Products/ChangeStatus/@product.Id">Ekle</a>
+                                            <a class="btn btn-outline-info" href="/AdministratorArea/Products/ChangeStatus/@product.ProductId">Ekle</a>
                                         }
                                         else
                                         {
-                                            <a class="btn btn-outline-danger btn-sm" href="/AdministratorArea/Products/ChangeStatus/@product.Id">Kaldır</a>
+                                            <a class="btn btn-outline-danger btn-sm" href="/AdministratorArea/Products/ChangeStatus/@product.ProductId">Kaldır</a>
                                         }
                                     </td>
                                 </tr>
@@ -79,6 +81,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
+                                <th></th>
                                 <th rowspan="1" colspan="1">Ürün Adı</th>
                                 <th rowspan="1" colspan="1">Kategori</th>
                                 <th rowspan="1" colspan="1">Fiyat</th>

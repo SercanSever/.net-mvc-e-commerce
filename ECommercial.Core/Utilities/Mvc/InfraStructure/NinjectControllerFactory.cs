@@ -14,7 +14,7 @@ namespace ECommercial.Core.Utilities.Mvc.InfraStructure
     {
         private IKernel _kernel;
 
-        public NinjectControllerFactory(INinjectModule module)
+        public NinjectControllerFactory(params INinjectModule[] module)
         {
             _kernel = new StandardKernel(module);
         }

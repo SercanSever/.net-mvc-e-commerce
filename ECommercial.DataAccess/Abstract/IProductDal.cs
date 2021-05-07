@@ -11,6 +11,5 @@ namespace ECommercial.DataAccess.Abstract
 {
     public interface IProductDal : IEntityRepository<Product>
     {
-        List<ProductWithImageDto> GetProductWithImage();
     }
 }

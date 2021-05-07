@@ -19,7 +19,7 @@ namespace ECommercial.UI.Areas.AdministratorArea.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            var products = _productService.GetProductWithImage().Data.OrderByDescending(x => x.ProductId).ToList();
+            var products = _productService.GetProductWithImages().Data.OrderByDescending(x => x.ProductId).ToList();
             return View(products);
         }
     }

@@ -38,7 +38,7 @@ namespace ECommercial.Bussiness.Concrete
 
         public IDataResult<Category> GetById(int categoryId)
         {
-            return new SuccessDataResult<Category>(_categoryDal.Get(x => x.Id == categoryId));
+            return new SuccessDataResult<Category>(_categoryDal.Get(x => x.CategoryId == categoryId));
         }
 
         public IResult Update(Category category)

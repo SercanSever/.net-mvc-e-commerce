@@ -9,10 +9,15 @@ namespace ECommercial.Entities.Dtos
     public class ProductWithImageDto
     {
         public int ProductId { get; set; }
-        public string ProductImage { get; set; }
+        public int CategoryId { get; set; }
         public string CategoryName { get; set; }
+        public string Image { get; set; }
         public string Name { get; set; }
         public decimal UnitPrice { get; set; }
         public int UnitsInStock { get; set; }
+        public bool StockStatus { get; set; }
+        public bool Status { get; set; }
+        public int PercentOfDiscount { get; set; }
+
     }
 }

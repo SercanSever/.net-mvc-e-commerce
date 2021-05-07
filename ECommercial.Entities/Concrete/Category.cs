@@ -11,11 +11,10 @@ namespace ECommercial.Entities.Concrete
 {
     public class Category : IEntity
     {
-        [Key]
-        public int Id { get; set; }
+        public int CategoryId { get; set; }
         [StringLength(60)]
         [Column(TypeName = "NVarChar")]
-        public string Name { get; set; }
+        public string CategoryName { get; set; }
         public bool Status { get; set; }
         public virtual List<Product> Products { get; set; }
     }

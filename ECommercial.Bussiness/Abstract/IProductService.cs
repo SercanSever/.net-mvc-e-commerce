@@ -16,8 +16,7 @@ namespace ECommercial.Bussiness.Abstract
         IResult Add(Product product);
         IResult Update(Product product);
         IResult Delete(Product product);
-
-        IDataResult<List<ProductWithImageDto>> GetProductWithImage();
+        IDataResult<List<ProductWithImageDto>> GetProductWithImages();
 
     }
 }

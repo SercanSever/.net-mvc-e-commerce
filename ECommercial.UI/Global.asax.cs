@@ -1,4 +1,5 @@
 ﻿using ECommercial.Bussiness.DependencyResolvers.Ninject;
+using ECommercial.Bussiness.MappingResolvers.AutoMapper;
 using ECommercial.Core.Utilities.Mvc.InfraStructure;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ namespace ECommercial.UI
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            ControllerBuilder.Current.SetControllerFactory(new NinjectControllerFactory(new BusinessModule()));
+            ControllerBuilder.Current.SetControllerFactory(new NinjectControllerFactory(new BusinessModule(), new AutoMapperModule()));
         }
     }
 }

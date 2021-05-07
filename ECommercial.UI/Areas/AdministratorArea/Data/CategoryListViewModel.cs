@@ -16,8 +16,8 @@ namespace ECommercial.UI.Areas.AdministratorArea.Data
                 var result = from c in context.Categories.Where(x => x.Status == true)
                              select new SelectListItem
                              {
-                                 Text = c.Name,
-                                 Value = c.Id.ToString()
+                                 Text = c.CategoryName,
+                                 Value = c.CategoryId.ToString()
                              };
                 return result.ToList();
             }
