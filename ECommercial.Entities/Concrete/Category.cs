@@ -15,6 +15,9 @@ namespace ECommercial.Entities.Concrete
         [StringLength(60)]
         [Column(TypeName = "NVarChar")]
         public string CategoryName { get; set; }
+        [StringLength(500)]
+        [Column(TypeName = "NVarChar")]
+        public string CategoryImage { get; set; }
         public bool Status { get; set; }
         public virtual List<Product> Products { get; set; }
     }

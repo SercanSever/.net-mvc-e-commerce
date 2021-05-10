@@ -3,6 +3,7 @@ using ECommercial.Core.Utilities.Results;
 using ECommercial.Entities.Concrete;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -35,6 +36,20 @@ namespace ECommercial.UI.Areas.AdministratorArea.Controllers
         [HttpPost]
         public ActionResult AddCategory(Category category)
         {
+            if (Request.Files.Count > 0 && !string.IsNullOrWhiteSpace(Request.Files[0].FileName))
+            {
+                string path = Server.MapPath("~/Uploads");
+                string fileName = Guid.NewGuid().ToString();
+                FileInfo info = new FileInfo(Request.Files[0].FileName);
+                fileName = $"{fileName}{info.Extension}";
+                path = Path.Combine(path, fileName);
+                Request.Files[0].SaveAs(path);
+                category.CategoryImage = fileName;
+            }
+            else
+            {
+                category.CategoryImage = "no-image-icon-4.png";
+            }
             var result = _categoryService.Add(category);
             if (result.Success)
             {
@@ -55,6 +70,16 @@ namespace ECommercial.UI.Areas.AdministratorArea.Controllers
         [HttpPost]
         public ActionResult UpdateCategory(Category category)
         {
+            if (Request.Files.Count > 0 && !string.IsNullOrWhiteSpace(Request.Files[0].FileName))
+            {
+                string path = Server.MapPath("~/Uploads");
+                string fileName = Guid.NewGuid().ToString();
+                FileInfo info = new FileInfo(Request.Files[0].FileName);
+                fileName = $"{fileName}{info.Extension}";
+                path = Path.Combine(path, fileName);
+                Request.Files[0].SaveAs(path);
+                category.CategoryImage = fileName;
+            }
             var result = _categoryService.Update(category);
             if (result.Success)
             {

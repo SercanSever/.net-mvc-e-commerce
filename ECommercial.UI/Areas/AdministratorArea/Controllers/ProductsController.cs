@@ -1,5 +1,6 @@
 ﻿using ECommercial.Bussiness.Abstract;
 using ECommercial.Entities.Concrete;
+using ECommercial.Entities.Dtos;
 using ECommercial.UI.Areas.AdministratorArea.Data;
 using System;
 using System.Web.Mvc;
@@ -19,7 +20,7 @@ namespace ECommercial.UI.Areas.AdministratorArea.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            var result = _productService.GetProductWithImages();
+            var result = _productService.GetAll();
             if (result.Success)
             {
                 return View(result.Data);
