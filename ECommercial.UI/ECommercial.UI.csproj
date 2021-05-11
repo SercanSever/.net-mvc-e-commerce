@@ -2565,6 +2565,7 @@
     <Content Include="ECommerce FrontEnd Template\ecommerce-html-template\lib\slick\slick.scss" />
     <Content Include="Areas\ECommercial\Views\Home\Index.cshtml" />
     <Content Include="Areas\ECommercial\Views\Products\Index.cshtml" />
+    <Content Include="Areas\ECommercial\Views\Products\ProductDetails.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

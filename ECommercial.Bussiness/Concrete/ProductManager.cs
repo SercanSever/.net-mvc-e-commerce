@@ -75,7 +75,14 @@ namespace ECommercial.Bussiness.Concrete
                 var list = context.Database.SqlQuery<ProductWithImageDto>($"select * from Products p inner join(select * from ProductImages where Id in (select t.id from(select ProductId, max(Id) as id from ProductImages group by ProductId) as t)) as pı on p.Id = pı.ProductId inner join Categories c on c.CategoryId = p.CategoryId where p.CategoryId = {id}").ToListAsync().Result;
                 return new SuccessDataResult<List<ProductWithImageDto>>(list);
             }
-
+        }
+        public IDataResult<ProductWithImageDto> GetProductWithImagesByProductId(int id)
+        {
+            using (ECommercialContext context = new ECommercialContext())
+            {
+                var product = context.Database.SqlQuery<ProductWithImageDto>($"select * from Products p inner join(select * from ProductImages where Id in (select t.id from(select ProductId, max(Id) as id from ProductImages group by ProductId) as t)) as pı on p.Id = pı.ProductId inner join Categories c on c.CategoryId = p.CategoryId where p.Id = {id}").FirstOrDefault();
+                return new SuccessDataResult<ProductWithImageDto>(product);
+            }
         }
 
 
@@ -97,7 +104,6 @@ namespace ECommercial.Bussiness.Concrete
             product.Status = false;
             return new SuccessResult();
         }
-
 
     }
 }

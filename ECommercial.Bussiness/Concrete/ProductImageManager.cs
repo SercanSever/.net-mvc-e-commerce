@@ -3,6 +3,7 @@ using ECommercial.Bussiness.Extensions;
 using ECommercial.Core.Utilities.Results;
 using ECommercial.DataAccess.Abstract;
 using ECommercial.Entities.Concrete;
+using ECommercial.Entities.Dtos;
 using System;
 using System.Collections.Generic;
 using System.IO;

@@ -13,11 +13,13 @@ namespace ECommercial.UI.Areas.ECommercial.Controllers
     {
         private IProductService _productService;
         private ICategoryService _categoryService;
+        private IProductImageService _productImageService;
 
-        public ProductsController(IProductService productService, ICategoryService categoryService)
+        public ProductsController(IProductService productService, ICategoryService categoryService, IProductImageService productImageService)
         {
             _productService = productService;
             _categoryService = categoryService;
+            _productImageService = productImageService;
         }
         [HttpGet]
         public ActionResult Index(string searchFilter = null)
@@ -65,6 +67,19 @@ namespace ECommercial.UI.Areas.ECommercial.Controllers
             if (result.Success)
             {
                 return View("Index", Tuple.Create<List<ProductWithImageDto>, List<Category>>(result.Data, categoryResult.Data));
+            }
+            throw new Exception();
+        }
+        [HttpGet]
+        public ActionResult ProductDetails(int id)
+        {
+            var productWithImage = _productService.GetProductWithImages().Data.Take(3);
+            var categoryResult = _categoryService.GetAll();
+            var productResult = _productService.GetById(id);
+            var productsByCategoryId = _productService.GetProductsWithCategoryId(productResult.Data.CategoryId);
+            if (productResult.Success)
+            {
+                return View(Tuple.Create<Product, List<Category>, List<ProductWithImageDto>, List<ProductWithImageDto>>(productResult.Data, categoryResult.Data, productWithImage.ToList(), productsByCategoryId.Data));
             }
             throw new Exception();
         }
