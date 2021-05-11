@@ -26,7 +26,12 @@
                 </div>
                 @Html.TextBoxFor(x => x.Name, new { @class = "form-control", @placeholder = "Ürün Adı", @type = "text" })
             </div>
-
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-box-open"></i></span>
+                </div>
+                @Html.TextBoxFor(x => x.UnitsInStock, new { @class = "form-control", @placeholder = "Stok Miktarı" })
+            </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text"><strong>₺</strong></span>
@@ -37,12 +42,7 @@
                 </div>
             </div>
 
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fas fa-box-open"></i></span>
-                </div>
-                @Html.TextBoxFor(x => x.UnitsInStock, new { @class = "form-control", @placeholder = "Stok Miktarı" })
-            </div>
+
 
             <div class="input-group mb-3">
                 <div class="input-group-prepend">

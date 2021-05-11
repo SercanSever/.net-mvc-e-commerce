@@ -22,7 +22,8 @@ namespace ECommercial.Entities.Concrete
         public decimal UnitPrice { get; set; }
         public int UnitsInStock { get; set; }
         public bool StockStatus { get; set; }
-        public int PercentOfDiscount { get; set; }
+        public decimal PercentOfDiscount { get; set; }
+        public decimal DiscountedPrice { get; set; }
         public bool Status { get; set; }
 
         public int CategoryId { get; set; }

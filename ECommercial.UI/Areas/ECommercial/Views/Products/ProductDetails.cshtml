@@ -39,7 +39,14 @@
                                 </div>
                                 <div class="price">
                                     <h4>Fiyat:</h4>
-                                    <p>@Model.Item1.UnitPrice₺ <span>149₺</span></p>
+                                    @if (Model.Item1.DiscountedPrice != 0)
+                                    {
+                                        <p>@Model.Item1.DiscountedPrice₺ <span>@Model.Item1.UnitPrice</span></p>
+                                    }
+                                    else
+                                    {
+                                        <p>@Model.Item1.UnitPrice</p>
+                                    }
                                 </div>
                                 <div class="quantity">
                                     <h4>Adet:</h4>

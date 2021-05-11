@@ -25,8 +25,9 @@
                                 <th>Ürün Adı</th>
                                 <th>Kategori</th>
                                 <th>Fiyat</th>
-                                <th>Stok Miktarı</th>
                                 <th>İndirim %</th>
+                                <th>İndirimli Fiyat</th>
+                                <th>Stok Miktarı</th>
                                 <th>Stok Durumu</th>
                                 <th>Durumu</th>
                                 <th></th>
@@ -39,8 +40,9 @@
                                     <td>@product.Name</td>
                                     <td>@product.Category.CategoryName</td>
                                     <td>@product.UnitPrice</td>
-                                    <td>@product.UnitsInStock</td>
                                     <td>@product.PercentOfDiscount</td>
+                                    <td>@product.DiscountedPrice</td>
+                                    <td>@product.UnitsInStock</td>
                                     <td>
                                         @if (!product.StockStatus)
                                         {
@@ -89,8 +91,9 @@
                                 <th rowspan="1" colspan="1">Ürün Adı</th>
                                 <th rowspan="1" colspan="1">Kategori</th>
                                 <th rowspan="1" colspan="1">Fiyat</th>
-                                <th rowspan="1" colspan="1">Stok Miktarı</th>
                                 <th rowspan="1" colspan="1">İndirim %</th>
+                                <th rowspan="1" colspan="1">İndirimli Fiyat</th>
+                                <th rowspan="1" colspan="1">Stok Miktarı</th>
                                 <th rowspan="1" colspan="1">Stok Durumu</th>
                                 <th rowspan="1" colspan="1">Durumu</th>
                                 <th></th>

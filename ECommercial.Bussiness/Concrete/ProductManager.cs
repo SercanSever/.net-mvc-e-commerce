@@ -25,7 +25,7 @@ namespace ECommercial.Bussiness.Concrete
 
         public IResult Add(Product product)
         {
-            BusinessRules.Run(SetProductStockStatus(product), StatusDefault(product));
+            BusinessRules.Run(SetProductStockStatus(product), StatusDefault(product), Discount(product));
             _productDal.Add(product);
             return new SuccessResult(Messages.ProductAdded);
         }
@@ -54,7 +54,7 @@ namespace ECommercial.Bussiness.Concrete
 
         public IResult Update(Product product)
         {
-            BusinessRules.Run(SetProductStockStatus(product));
+            BusinessRules.Run(SetProductStockStatus(product), Discount(product));
             _productDal.Update(product);
             return new SuccessResult(Messages.ProductUpdated);
         }
@@ -103,6 +103,16 @@ namespace ECommercial.Bussiness.Concrete
         {
             product.Status = false;
             return new SuccessResult();
+        }
+        private IResult Discount(Product product)
+        {
+            if (product.PercentOfDiscount != 0)
+            {
+                var discounted = product.UnitPrice * (product.PercentOfDiscount / 100);
+                product.DiscountedPrice = product.UnitPrice - discounted;
+            }
+            return new SuccessResult();
+
         }
 
     }

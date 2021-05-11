@@ -19,5 +19,6 @@ namespace ECommercial.Entities.Concrete
         public byte[] PaswordHash { get; set; }
         public bool Status { get; set; }
         public List<UserAddress> UserAddresses { get; set; }
+        public List<UserFavorites> UserFavorites { get; set; }
     }
 }

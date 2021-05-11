@@ -25,7 +25,12 @@
                 </div>
                 @Html.TextBoxFor(x => x.Name, new { @class = "form-control", @value = "@Model.Name", @type = "text" })
             </div>
-
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-box-open"></i></span>
+                </div>
+                @Html.TextBoxFor(x => x.UnitsInStock, new { @class = "form-control", @value = "@Model.UnitsInStock" })
+            </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text"><strong>₺</strong></span>
@@ -35,19 +40,11 @@
                     <span class="input-group-text">.00</span>
                 </div>
             </div>
-
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fas fa-box-open"></i></span>
-                </div>
-                @Html.TextBoxFor(x => x.UnitsInStock, new { @class = "form-control", @value = "@Model.UnitsInStock" })
-            </div>
-
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fas fa-percent"></i></span>
                 </div>
-                @Html.TextBoxFor(x => x.Name, new { @class = "form-control", @value = "@Model.PercentOfDiscount" })
+                @Html.TextBoxFor(x => x.PercentOfDiscount, new { @class = "form-control", @value = "@Model.PercentOfDiscount" })
             </div>
             <button type="submit" class="btn btn-block btn-outline-warning">Güncelle</button>
         </div>
