@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ECommercial.Core.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ECommercial.Entities.Concrete
 {
-    public class UserFavorites
+    public class UserFavorite : IEntity
     {
         [Key]
         public int FavoritesId { get; set; }

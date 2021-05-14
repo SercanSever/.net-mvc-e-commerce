@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ECommercial.Bussiness.Abstract;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,7 +9,13 @@ namespace ECommercial.UI.Areas.ECommercial.Controllers
 {
     public class UsersController : Controller
     {
-        // GET: ECommercial/Users
+        private IUserService _userService;
+
+        public UsersController(IUserService userService)
+        {
+            _userService = userService;
+        }
+
         public ActionResult Index()
         {
             return View();

@@ -19,6 +19,6 @@ namespace ECommercial.DataAccess.Context
         public DbSet<User> Users { get; set; }
         public DbSet<UserAddress> UserAddresses { get; set; }
         public DbSet<ProductImage> ProductImages { get; set; }
-        public DbSet<UserFavorites> UserFavorites { get; set; }
+        public DbSet<UserFavorite> UserFavorites { get; set; }
     }
 }

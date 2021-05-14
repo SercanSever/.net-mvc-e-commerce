@@ -67,10 +67,12 @@
     <Compile Include="Abstract\ICategoryService.cs" />
     <Compile Include="Abstract\IProductImageService.cs" />
     <Compile Include="Abstract\IProductService.cs" />
+    <Compile Include="Abstract\IUserFavoriteService.cs" />
     <Compile Include="Abstract\IUserService.cs" />
     <Compile Include="Concrete\CategoryManager.cs" />
     <Compile Include="Concrete\ProductImageManager.cs" />
     <Compile Include="Concrete\ProductManager.cs" />
+    <Compile Include="Concrete\UserFavoriteManager.cs" />
     <Compile Include="Concrete\UserManager.cs" />
     <Compile Include="Constants\Messages.cs" />
     <Compile Include="DependencyResolvers\Ninject\BusinessModule.cs" />

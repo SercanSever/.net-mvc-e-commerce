@@ -47,7 +47,7 @@
     <Compile Include="Concrete\ProductImage.cs" />
     <Compile Include="Concrete\User.cs" />
     <Compile Include="Concrete\UserAddress.cs" />
-    <Compile Include="Concrete\UserFavorites.cs" />
+    <Compile Include="Concrete\UserFavorite.cs" />
     <Compile Include="Dtos\ProductWithImageDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -55,10 +55,12 @@
     <Compile Include="Abstract\IProductDal.cs" />
     <Compile Include="Abstract\IProductImageDal.cs" />
     <Compile Include="Abstract\IUserDal.cs" />
+    <Compile Include="Abstract\IUserFavoriteDal.cs" />
     <Compile Include="Concrete\EntityFramework\EfCategoryDal.cs" />
     <Compile Include="Concrete\EntityFramework\EfProductDal.cs" />
     <Compile Include="Concrete\EntityFramework\EfProductImageDal.cs" />
     <Compile Include="Concrete\EntityFramework\EfUserDal.cs" />
+    <Compile Include="Concrete\EntityFramework\EfUserFavoriteDal.cs" />
     <Compile Include="Context\ECommercialContext.cs" />
     <Compile Include="Migrations\202105071350452_intial.cs" />
     <Compile Include="Migrations\202105071350452_intial.designer.cs">
