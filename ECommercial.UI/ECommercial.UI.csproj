@@ -135,8 +135,10 @@
     <Compile Include="Areas\AdministratorArea\Controllers\HomeController.cs" />
     <Compile Include="Areas\AdministratorArea\Controllers\ProductsController.cs" />
     <Compile Include="Areas\AdministratorArea\Data\CategoryListViewModel.cs" />
+    <Compile Include="Areas\ECommercial\Controllers\AuthController.cs" />
     <Compile Include="Areas\ECommercial\Controllers\HomeController.cs" />
     <Compile Include="Areas\ECommercial\Controllers\ProductsController.cs" />
+    <Compile Include="Areas\ECommercial\Controllers\UsersController.cs" />
     <Compile Include="Areas\ECommercial\ECommercialAreaRegistration.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -2566,6 +2568,7 @@
     <Content Include="Areas\ECommercial\Views\Home\Index.cshtml" />
     <Content Include="Areas\ECommercial\Views\Products\Index.cshtml" />
     <Content Include="Areas\ECommercial\Views\Products\ProductDetails.cshtml" />
+    <Content Include="Areas\ECommercial\Views\Auth\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2595,6 +2598,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\ECommercial\Data\" />
+    <Folder Include="Areas\ECommercial\Views\Users\" />
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
   </ItemGroup>

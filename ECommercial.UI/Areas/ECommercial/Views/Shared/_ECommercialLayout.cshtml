@@ -57,17 +57,21 @@
                         <a href="product-detail.html" class="nav-item nav-link">Favoriler</a>
                         <a href="checkout.html" class="nav-item nav-link">İletişim</a>
                         <a href="checkout.html" class="nav-item nav-link">Hakkımızda</a>
-                        <a href="my-account.html" class="nav-item nav-link">Hesap Bilgilerim</a>
+                        @if (Request.Cookies.Count > 1)
+                        {
+                            <a href="my-account.html" class="nav-item nav-link">Hesap Bilgilerim</a>
+                        }
 
                     </div>
                     <div class="navbar-nav ml-auto">
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Giriş Yap</a>
-                            <div class="dropdown-menu">
-                                <a href="/ECommercial/Login/Index" class="dropdown-item">Giriş Yap</a>
-                                <a href="/ECommercial/Login/SignUp" class="dropdown-item">Kayıt Ol</a>
-                            </div>
-                        </div>
+                        @if (Request.Cookies.Count > 1)
+                        {
+                            <a href="/ECommercial/Auth/LogOut" class="btn btn-outline-secondary btn-sm">Çıkış Yap</a>
+                        }
+                        else
+                        {
+                            <a href="/ECommercial/Auth/Index" class="btn btn-outline-info btn-sm">Giriş Yap</a>
+                        }
                     </div>
                 </div>
             </nav>

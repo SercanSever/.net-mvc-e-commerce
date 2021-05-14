@@ -1,0 +1,77 @@
+﻿@using ECommercial.Entities.Concrete
+@model User
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/ECommercial/Views/Shared/_ECommercialLayout.cshtml";
+}
+
+<div class="login">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6">
+                <h2>Kayıt Ol !</h2>
+                <div class="register-form shadow">
+                    @using (Html.BeginForm("SignIn", "Auth", FormMethod.Post))
+                    {
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Ad</label>
+                                @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control", @placeholder = "Ad", @type = "text" })
+                            </div>
+                            <div class="col-md-6">
+                                <label>Soyad</label>
+                                @Html.TextBoxFor(x => x.LastName, new { @class = "form-control", @placeholder = "Soyad", @type = "text" })
+                            </div>
+                            <div class="col-md-6">
+                                <label>E-mail</label>
+                                @Html.TextBoxFor(x => x.Email, new { @class = "form-control", @placeholder = "E-mail", @type = "e-mail" })
+                            </div>
+                            <div class="col-md-6">
+                                <label>Telefon</label>
+                                @Html.TextBoxFor(x => x.Phone, new { @class = "form-control", @placeholder = "Telefon", @type = "text" })
+                            </div>
+                            <div class="col-md-6">
+                                <label>Şifre</label>
+                                @Html.TextBoxFor(x => x.PaswordHash, new { @class = "form-control", @placeholder = "Şifre", @type = "text" })
+                            </div>
+                            <div class="col-md-12">
+                                <button type="submit" class="btn">Kayıt ol</button>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                @using (Html.BeginForm("LogIn", "Auth", FormMethod.Post))
+                {
+                    <h2>Giriş Yap</h2>
+                    <div class="login-form shadow">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>E-mail</label>
+                                @Html.TextBoxFor(x => x.Email, new { @class = "form-control", @placeholder = "Email", @type = "text" })
+                            </div>
+                            <div class="col-md-6">
+                                <label>Şifre</label>
+                                @Html.TextBoxFor(x => x.PaswordHash, new { @class = "form-control", @placeholder = "Şifre", @type = "text" })
+                            </div>
+                            <div class="col-md-12">
+                                <div class="custom-control custom-checkbox">
+                                    @Html.CheckBoxFor(x => x.RememberMe, new { @class = "custom-control-input", @type = "checkbox", @id = "newaccount" })
+                                    <label class="custom-control-label" for="newaccount">Beni Hatırla</label>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <button class="btn">Giriş Yap</button>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+
