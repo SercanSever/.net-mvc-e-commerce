@@ -2569,6 +2569,7 @@
     <Content Include="Areas\ECommercial\Views\Products\Index.cshtml" />
     <Content Include="Areas\ECommercial\Views\Products\ProductDetails.cshtml" />
     <Content Include="Areas\ECommercial\Views\Auth\Index.cshtml" />
+    <Content Include="Areas\ECommercial\Views\Users\UserFavorites.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2598,7 +2599,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\ECommercial\Data\" />
-    <Folder Include="Areas\ECommercial\Views\Users\" />
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
   </ItemGroup>

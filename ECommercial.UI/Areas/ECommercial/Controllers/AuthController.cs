@@ -39,6 +39,7 @@ namespace ECommercial.UI.Areas.ECommercial.Controllers
             if (result.Success)
             {
                 Session["UserName"] = result.Data.FirstName;
+                Session["Id"] = result.Data.Id;
                 FormsAuthentication.SetAuthCookie(result.Data.Email, result.Data.RememberMe);
                 return RedirectToAction("Index", "Home");
             }
@@ -49,6 +50,7 @@ namespace ECommercial.UI.Areas.ECommercial.Controllers
             FormsAuthentication.SignOut();
             Request.Cookies.Clear();
             Session["UserName"] = null;
+            Session["Id"] = null;
             return RedirectToAction("Index");
         }
     }

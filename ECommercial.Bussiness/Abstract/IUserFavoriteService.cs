@@ -1,5 +1,6 @@
 ﻿using ECommercial.Core.Utilities.Results;
 using ECommercial.Entities.Concrete;
+using ECommercial.Entities.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace ECommercial.Bussiness.Abstract
 {
     public interface IUserFavoriteService
     {
-        IDataResult<List<UserFavorite>> GetAll();
+        IDataResult<List<ProductWithImageDto>> GetAll();
+        IResult Add(UserFavorite userFavorite);
     }
 }

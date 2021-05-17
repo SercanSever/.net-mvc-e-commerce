@@ -1,0 +1,54 @@
+﻿@using ECommercial.Entities.Dtos
+@model List<ProductWithImageDto>
+@{
+    ViewBag.Title = "UserFavorites";
+    Layout = "~/Areas/ECommercial/Views/Shared/_ECommercialLayout.cshtml";
+}
+
+<div class="product-view">
+    <div class="container-fluid">
+        <div class="section-header mb-sm-2 p-sm-2 shadow-sm">
+            <h1>Favoriler</h1>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row">
+                    @foreach (var userFavorites in Model)
+                    {
+                        <div class="col-md-3">
+                            <div class="product-item">
+                                <div class="product-title">
+                                    <a href="#">@userFavorites.Name</a>
+                                    <div class="ratting">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </div>
+                                </div>
+                                <div class="product-image">
+                                    <a href="product-detail.html">
+                                        <img src="~/Uploads/@userFavorites.Image" alt="Product Image">
+                                    </a>
+                                    <div class="product-action">
+                                        <a href="#"><i class="fa fa-cart-plus"></i></a>
+                                        <a href="/ECommercial/Users/AddFavorite/@userFavorites.ProductId"><i class="fa fa-heart"></i></a>
+                                        <a href="/ECommercial/Products/ProductDetails/@userFavorites.ProductId"><i class="fa fa-search"></i></a>
+                                    </div>
+                                </div>
+                                <div class="product-price">
+                                    <h3>@userFavorites.UnitPrice<span>₺</span></h3>
+                                    <a class="btn btn-sm mt-sm-1" href=""><i class="fa fa-shopping-cart"></i>Sepete Ekle</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
