@@ -143,6 +143,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\FavoriteCountViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -2570,6 +2571,7 @@
     <Content Include="Areas\ECommercial\Views\Products\ProductDetails.cshtml" />
     <Content Include="Areas\ECommercial\Views\Auth\Index.cshtml" />
     <Content Include="Areas\ECommercial\Views\Users\UserFavorites.cshtml" />
+    <Content Include="Areas\ECommercial\Views\Shared\_PartialFavoriteCount.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2600,7 +2602,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\ECommercial\Data\" />
     <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

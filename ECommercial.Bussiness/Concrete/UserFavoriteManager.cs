@@ -23,6 +23,11 @@ namespace ECommercial.Bussiness.Concrete
 
         public IResult Add(UserFavorite userFavorite)
         {
+            var result = _userFavoriteDal.Get(x => x.ProductId == userFavorite.ProductId);
+            if (result != null)
+            {
+                return new ErrorResult();
+            }
             _userFavoriteDal.Add(userFavorite);
             return new SuccessResult();
         }
@@ -32,9 +37,19 @@ namespace ECommercial.Bussiness.Concrete
             using (ECommercialContext context = new ECommercialContext())
             {
 
-                var list = context.Database.SqlQuery<ProductWithImageDto>("select * from Products p inner join(select * from ProductImages where Id in(select t.id from(select ProductId, max(Id) as id from ProductImages group by ProductId) as t)) as pı on p.Id = pı.ProductId inner join UserFavorites uf on uf.ProductId = p.Id").ToListAsync().Result;
+                var list = context.Database.SqlQuery<ProductWithImageDto>("select * from Products p inner join(select * from ProductImages where Id in(select t.id from(select ProductId, max(Id) as id from ProductImages group by ProductId) as t)) as pı on p.Id = pı.ProductId inner join UserFavorites uf on uf.ProductId = p.Id where uf.Status = 'True'").ToListAsync().Result;
                 return new SuccessDataResult<List<ProductWithImageDto>>(list);
             }
+        }
+        public IDataResult<UserFavorite> GetById(int id)
+        {
+            return new SuccessDataResult<UserFavorite>(_userFavoriteDal.Get(x => x.ProductId == id));
+        }
+
+        public IResult Update(UserFavorite userFavorite)
+        {
+            _userFavoriteDal.Update(userFavorite);
+            return new SuccessResult();
         }
     }
 }

@@ -12,6 +12,7 @@ namespace ECommercial.Entities.Concrete
     {
         [Key]
         public int FavoritesId { get; set; }
+        public bool Status { get; set; } = true;
         public int ProductId { get; set; }
         public virtual Product Product { get; set; }
         public int UserId { get; set; }

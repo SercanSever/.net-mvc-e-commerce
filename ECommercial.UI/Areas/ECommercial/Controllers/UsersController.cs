@@ -22,20 +22,16 @@ namespace ECommercial.UI.Areas.ECommercial.Controllers
             _productService = productService;
 
         }
-
-        public ActionResult Index()
-        {
-            return View();
-        }
-        [HttpGet]
         [Authorize]
+        [HttpGet]
         public ActionResult UserFavorites()
         {
             var result = _userFavoriteService.GetAll().Data.Where(x => x.UserId == Convert.ToInt32(Session["Id"])).ToList();
+            ViewData["Count"] = result.Count;
             return View(result);
         }
-        [HttpGet]
         [Authorize]
+        [HttpGet]
         public ActionResult AddFavorite(int id)
         {
             var product = _productService.GetById(id);
@@ -43,7 +39,8 @@ namespace ECommercial.UI.Areas.ECommercial.Controllers
             var userfavorites = new UserFavorite
             {
                 ProductId = product.Data.Id,
-                UserId = userId
+                UserId = userId,
+                Status = true
             };
             var result = _userFavoriteService.Add(userfavorites);
             if (result.Success)
@@ -55,7 +52,17 @@ namespace ECommercial.UI.Areas.ECommercial.Controllers
         [HttpGet]
         public ActionResult RemoveFavorite(int id)
         {
-            return View();
+            var result = _userFavoriteService.GetById(id);
+            result.Data.Status = false;
+            _userFavoriteService.Update(result.Data);
+            return RedirectToAction("UserFavorites", result);
+        }
+        [HttpGet]
+        public ActionResult GetCountWithPartial()
+        {
+            var result = _userFavoriteService.GetAll().Data.Where(x => x.UserId == Convert.ToInt32(Session["Id"])).ToList();
+            ViewBag.Count = result;
+            return PartialView("_PartialFavoriteCount");
         }
     }
 }

@@ -13,6 +13,7 @@
                 <div class="register-form shadow">
                     @using (Html.BeginForm("SignIn", "Auth", FormMethod.Post))
                     {
+                        @Html.AntiForgeryToken()
                         <div class="row">
                             <div class="col-md-6">
                                 <label>Ad</label>
@@ -46,6 +47,7 @@
             <div class="col-lg-6">
                 @using (Html.BeginForm("LogIn", "Auth", FormMethod.Post))
                 {
+                    @Html.AntiForgeryToken()
                     <h2>Giriş Yap</h2>
                     <div class="login-form shadow">
                         <div class="row">

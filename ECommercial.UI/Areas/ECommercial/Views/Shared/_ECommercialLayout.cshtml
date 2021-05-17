@@ -1,5 +1,4 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -45,7 +44,7 @@
     <div class="nav">
         <div class="container-fluid">
             <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-                <a href="#" class="navbar-brand">MENU</a>
+                <a href="/ECommercial/Home/Index" class="navbar-brand">MENU</a>
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -57,14 +56,14 @@
                         <a href="/ECommercial/Users/UserFavorites" class="nav-item nav-link">Favoriler</a>
                         <a href="checkout.html" class="nav-item nav-link">İletişim</a>
                         <a href="checkout.html" class="nav-item nav-link">Hakkımızda</a>
-                        @if (Request.Cookies.Count > 1)
+                        @if (User.Identity.IsAuthenticated)
                         {
                             <a href="my-account.html" class="nav-item nav-link">Hesap Bilgilerim</a>
                         }
 
                     </div>
                     <div class="navbar-nav ml-auto">
-                        @if (Request.Cookies.Count > 1)
+                        @if (User.Identity.IsAuthenticated)
                         {
                             <a href="/ECommercial/Auth/LogOut" class="btn btn-outline-secondary btn-sm">Çıkış Yap</a>
                         }
@@ -84,26 +83,28 @@
             <div class="row align-items-center">
                 <div class="col-md-3">
                     <div class="logo">
-                        <a href="index.html">
+                        <a href="/ECommercial/Home/Index">
                             <img src="~/ECommerce FrontEnd Template/ecommerce-html-template/img/logo.png" alt="Logo">
                         </a>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="search">
-                        <input type="text" placeholder="Search">
-                        <button><i class="fa fa-search"></i></button>
+                        @using (Html.BeginForm("Index", "Products", FormMethod.Get))
+                        {
+                            @Html.TextBox("searchFilter", "", new { @placeholder = "Ürün Ara" })
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                        }
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="user">
-                        <a href="wishlist.html" class="btn wishlist">
-                            <i class="fa fa-heart"></i>
-                            <span>(0)</span>
-                        </a>
+
+                        @Html.Partial("_PartialFavoriteCount")
+
                         <a href="cart.html" class="btn cart">
                             <i class="fa fa-shopping-cart"></i>
-                            <span>(0)</span>
+                            <span>0</span>
                         </a>
                     </div>
                 </div>

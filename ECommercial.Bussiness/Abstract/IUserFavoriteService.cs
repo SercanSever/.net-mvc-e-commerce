@@ -13,5 +13,7 @@ namespace ECommercial.Bussiness.Abstract
     {
         IDataResult<List<ProductWithImageDto>> GetAll();
         IResult Add(UserFavorite userFavorite);
+        IResult Update(UserFavorite userFavorite);
+        IDataResult<UserFavorite> GetById(int id);
     }
 }

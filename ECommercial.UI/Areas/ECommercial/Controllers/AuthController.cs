@@ -23,6 +23,7 @@ namespace ECommercial.UI.Areas.ECommercial.Controllers
             return View();
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult SignIn(User user)
         {
             var result = _userService.Add(user);
@@ -33,6 +34,7 @@ namespace ECommercial.UI.Areas.ECommercial.Controllers
             throw new Exception();
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult LogIn(User user)
         {
             var result = _userService.IsLoginSuccess(user);
@@ -49,8 +51,7 @@ namespace ECommercial.UI.Areas.ECommercial.Controllers
         {
             FormsAuthentication.SignOut();
             Request.Cookies.Clear();
-            Session["UserName"] = null;
-            Session["Id"] = null;
+            HttpContext.Session.Abandon();
             return RedirectToAction("Index");
         }
     }
