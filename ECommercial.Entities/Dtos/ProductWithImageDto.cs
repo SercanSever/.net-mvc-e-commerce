@@ -17,6 +17,7 @@ namespace ECommercial.Entities.Dtos
         public decimal UnitPrice { get; set; }
         public int UnitsInStock { get; set; }
         public bool StockStatus { get; set; }
+        public int Quantity { get; set; }
         public bool Status { get; set; }
         public decimal PercentOfDiscount { get; set; }
 

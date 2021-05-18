@@ -1,5 +1,7 @@
 ﻿using ECommercial.Bussiness.Abstract;
 using ECommercial.Bussiness.Concrete;
+using ECommercial.Core.CrossCuttingConcerns.Caching;
+using ECommercial.Core.CrossCuttingConcerns.Caching.Microsoft;
 using ECommercial.DataAccess.Abstract;
 using ECommercial.DataAccess.Concrete.EntityFramework;
 using ECommercial.DataAccess.Context;
@@ -18,6 +20,8 @@ namespace ECommercial.Bussiness.DependencyResolvers.Ninject
         public override void Load()
         {
             Bind<DbContext>().To<ECommercialContext>();
+
+            Bind<ICacheManager>().To<MemoryCacheManager>();
 
             Bind<IProductService>().To<ProductManager>();
             Bind<IProductDal>().To<EfProductDal>();

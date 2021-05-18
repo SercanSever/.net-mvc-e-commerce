@@ -71,11 +71,6 @@ namespace ECommercial.UI.Areas.ECommercial.Controllers
         public ActionResult LogOut()
         {
             FormsAuthentication.SignOut();
-            //if (Response.Cookies["cooky"] != null)
-            //{
-            //    Response.Cookies["cooky"].Expires = DateTime.Now.AddDays(-1);
-            //}
-            //Request.Cookies.Clear();
             HttpContext.Session.Abandon();
             return RedirectToAction("Index");
         }

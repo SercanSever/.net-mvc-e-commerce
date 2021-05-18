@@ -136,6 +136,7 @@
     <Compile Include="Areas\AdministratorArea\Controllers\ProductsController.cs" />
     <Compile Include="Areas\AdministratorArea\Data\CategoryListViewModel.cs" />
     <Compile Include="Areas\ECommercial\Controllers\AuthController.cs" />
+    <Compile Include="Areas\ECommercial\Controllers\CartsController.cs" />
     <Compile Include="Areas\ECommercial\Controllers\HomeController.cs" />
     <Compile Include="Areas\ECommercial\Controllers\ProductsController.cs" />
     <Compile Include="Areas\ECommercial\Controllers\UsersController.cs" />
@@ -2573,6 +2574,7 @@
     <Content Include="Areas\ECommercial\Views\Users\UserFavorites.cshtml" />
     <Content Include="Areas\ECommercial\Views\Shared\_PartialFavoriteCount.cshtml" />
     <Content Include="Areas\ECommercial\Views\Shared\_PartialCommentList.cshtml" />
+    <Content Include="Areas\ECommercial\Views\Carts\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
