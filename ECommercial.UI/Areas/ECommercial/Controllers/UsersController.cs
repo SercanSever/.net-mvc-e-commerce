@@ -47,14 +47,14 @@ namespace ECommercial.UI.Areas.ECommercial.Controllers
             {
                 return RedirectToAction("Index", "Products");
             }
-            throw new Exception(result.Message);
+            return RedirectToAction("UserFavorites");
         }
         [HttpGet]
         public ActionResult RemoveFavorite(int id)
         {
             var result = _userFavoriteService.GetById(id);
-            result.Data.Status = false;
-            _userFavoriteService.Update(result.Data);
+            //result.Data.Status = false;
+            _userFavoriteService.Delete(result.Data);
             return RedirectToAction("UserFavorites", result);
         }
         [HttpGet]

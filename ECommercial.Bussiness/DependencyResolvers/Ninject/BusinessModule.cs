@@ -31,9 +31,11 @@ namespace ECommercial.Bussiness.DependencyResolvers.Ninject
             Bind<IProductImageService>().To<ProductImageManager>();
             Bind<IProductImageDal>().To<EfProductImageDal>();
 
-
             Bind<IUserFavoriteService>().To<UserFavoriteManager>();
             Bind<IUserFavoriteDal>().To<EfUserFavoriteDal>();
+
+            Bind<ICommentService>().To<CommentManager>();
+            Bind<ICommentDal>().To<EfCommentDal>();
         }
     }
 }

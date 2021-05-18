@@ -11,9 +11,6 @@ namespace ECommercial.Entities.Concrete
 {
     public class Product : IEntity
     {
-        public Product()
-        {
-        }
         [Key]
         public int Id { get; set; }
         [StringLength(60)]

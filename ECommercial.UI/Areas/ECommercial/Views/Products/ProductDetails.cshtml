@@ -1,12 +1,13 @@
 ﻿@using ECommercial.Entities.Concrete
 @using ECommercial.Entities.Dtos
-@model Tuple<Product, List<Category>, List<ProductWithImageDto>, List<ProductWithImageDto>>
+@model Tuple<Product, List<Category>, List<ProductWithImageDto>, Comment>
 @{
     ViewBag.Title = "ProductDetails";
     Layout = "~/Areas/ECommercial/Views/Shared/_ECommercialLayout.cshtml";
 }
 <!-- Product Detail Start -->
 <div class="product-detail">
+    @Html.HiddenFor(x => x.Item1.Id)
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-8">
@@ -115,126 +116,45 @@
                             <div id="reviews" class="container tab-pane fade">
                                 <div class="reviews-submitted">
 
-                                    @* Yorumm !!!! *@
-
-
-                                    <div class="reviewer">Phasellus Gravida - <span>01 Jan 2020</span></div>
-                                    <div class="ratting">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                    <p>
-                                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.
-                                    </p>
-
-
-
+                                    @Html.Action("ListOfComments", "Products")
 
                                 </div>
-                                <div class="reviews-submit">
-                                    <h4>Give your Review:</h4>
-                                    <div class="ratting">
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
+
+
+                                @using (Html.BeginForm("AddComment", "Products", FormMethod.Post))
+                                {
+                                    @Html.HiddenFor(x => x.Item1.Id)
+                                    <div class="reviews-submit">
+                                        <h4>Ürün Hakkında Yorum Yaz :</h4>
+                                        <div class="ratting">
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                        <div class="row form">
+                                            <div class="col-sm-6">
+                                                @Html.TextBoxFor(x => x.Item4.User.FirstName, new { @placeholder = "İsim" })
+                                            </div>
+                                            <div class="col-sm-6">
+                                                @Html.TextBoxFor(x => x.Item4.User.Email, new { @placeholder = "E-mail" })
+                                            </div>
+                                            <div class="col-sm-12">
+                                                @Html.TextAreaFor(x => x.Item4.Content, new { @placeholder = "Yorumunuz.." })
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <button type="submit">Yorum Yap</button>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="row form">
-                                        <div class="col-sm-6">
-                                            <input type="text" placeholder="Name">
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <input type="email" placeholder="Email">
-                                        </div>
-                                        <div class="col-sm-12">
-                                            <textarea placeholder="Review"></textarea>
-                                        </div>
-                                        <div class="col-sm-12">
-                                            <button>Yorum Yap</button>
-                                        </div>
-                                    </div>
-                                </div>
+                                }
+
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="product">
-                    <div class="section-header">
-                        <h1>Benzer Ürünler </h1>
-                    </div>
-                    <div class="row align-items-center product-slider product-slider-3">
-                        @foreach (var products in Model.Item4)
-                        {
-                            <div class="col-lg-3">
-                                <div class="product-item">
-                                    <div class="product-title">
-                                        <a href="#">@products.Name</a>
-                                        <div class="ratting">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                    </div>
-                                    <div class="product-image">
-                                        <a href="product-detail.html">
-                                            <img src="~/ECommerce FrontEnd Template/ecommerce-html-template/img/product-10.jpg" alt="Product Image">
-                                        </a>
-                                        <div class="product-action">
-                                            <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                            <a href="#"><i class="fa fa-heart"></i></a>
-                                            <a href="#"><i class="fa fa-search"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="product-price">
-                                        <h3><span>$</span>99</h3>
-                                        <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
-                                    </div>
-                                </div>
-                            </div>
-                            //BU SİLİNECEK
-                            <div class="col-lg-3">
-                                <div class="product-item">
-                                    <div class="product-title">
-                                        <a href="#">@products.Name</a>
-                                        <div class="ratting">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                    </div>
-                                    <div class="product-image">
-                                        <a href="product-detail.html">
-                                            <img src="~/ECommerce FrontEnd Template/ecommerce-html-template/img/product-10.jpg" alt="Product Image">
-                                        </a>
-                                        <div class="product-action">
-                                            <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                            <a href="#"><i class="fa fa-heart"></i></a>
-                                            <a href="#"><i class="fa fa-search"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="product-price">
-                                        <h3><span>$</span>99</h3>
-                                        <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
-                                    </div>
-                                </div>
-                            </div>
-                            //BU SİLİNECEK
-                        }
-                    </div>
-                </div>
             </div>
-
-
-            <!-- Side Bar Start -->
             <div class="col-lg-4 sidebar">
                 <div class="sidebar-widget category">
                     <div class="sidebar-widget brands">
@@ -248,16 +168,20 @@
                         </ul>
                     </div>
                 </div>
-
-
-                <div class="sidebar-widget widget-slider">
-                    <div class="sidebar-slider normal-slider">
-
-                        @foreach (var product in Model.Item3)
-                        {
+            </div>
+        </div>
+        <div class="col-lg 12">
+            <div class="product">
+                <div class="section-header">
+                    <h1>Benzer Ürünler </h1>
+                </div>
+                <div class="row align-items-center product-slider product-slider-3">
+                    @foreach (var products in Model.Item3)
+                    {
+                        <div class="col-lg-3">
                             <div class="product-item">
                                 <div class="product-title">
-                                    <a href="#">@product.Name</a>
+                                    <a href="#">@products.Name</a>
                                     <div class="ratting">
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star"></i>
@@ -268,29 +192,54 @@
                                 </div>
                                 <div class="product-image">
                                     <a href="product-detail.html">
-                                        <img src="~/Uploads/@product.Image" alt="Product Image">
+                                        <img src="~/ECommerce FrontEnd Template/ecommerce-html-template/img/product-10.jpg" alt="Product Image">
                                     </a>
                                     <div class="product-action">
                                         <a href="#"><i class="fa fa-cart-plus"></i></a>
                                         <a href="#"><i class="fa fa-heart"></i></a>
-                                        <a href="/ECommercial/Products/ProductDetails/@product.ProductId"><i class="fa fa-search"></i></a>
+                                        <a href="#"><i class="fa fa-search"></i></a>
                                     </div>
                                 </div>
                                 <div class="product-price">
-                                    <h3>@product.UnitPrice<span>₺</span></h3>
-                                    <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Sepete Ekle</a>
+                                    <h3><span>$</span>99</h3>
+                                    <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
                                 </div>
                             </div>
-                        }
-
-
-
-                    </div>
+                        </div>
+                        //BU SİLİNECEK
+                        <div class="col-lg-3">
+                            <div class="product-item">
+                                <div class="product-title">
+                                    <a href="#">@products.Name</a>
+                                    <div class="ratting">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </div>
+                                </div>
+                                <div class="product-image">
+                                    <a href="product-detail.html">
+                                        <img src="~/ECommerce FrontEnd Template/ecommerce-html-template/img/product-10.jpg" alt="Product Image">
+                                    </a>
+                                    <div class="product-action">
+                                        <a href="#"><i class="fa fa-cart-plus"></i></a>
+                                        <a href="#"><i class="fa fa-heart"></i></a>
+                                        <a href="#"><i class="fa fa-search"></i></a>
+                                    </div>
+                                </div>
+                                <div class="product-price">
+                                    <h3><span>$</span>99</h3>
+                                    <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        //BU SİLİNECEK
+                    }
                 </div>
             </div>
         </div>
     </div>
-    <!-- Side Bar End -->
-</div>
 
-<!-- Product Detail End -->
+    <!-- Product Detail End -->

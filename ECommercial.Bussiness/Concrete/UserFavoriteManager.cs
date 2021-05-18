@@ -32,6 +32,12 @@ namespace ECommercial.Bussiness.Concrete
             return new SuccessResult();
         }
 
+        public IResult Delete(UserFavorite userFavorite)
+        {
+            _userFavoriteDal.Delete(userFavorite);
+            return new SuccessResult();
+        }
+
         public IDataResult<List<ProductWithImageDto>> GetAll()
         {
             using (ECommercialContext context = new ECommercialContext())

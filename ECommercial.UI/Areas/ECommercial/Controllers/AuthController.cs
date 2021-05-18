@@ -20,7 +20,17 @@ namespace ECommercial.UI.Areas.ECommercial.Controllers
         [AllowAnonymous]
         public ActionResult Index()
         {
-            return View();
+            var model = new User();
+            model.Email = CheckCookie();
+            return View("Index", model);
+        }
+        private string CheckCookie()
+        {
+            if (Request.Cookies.Get("cooky") != null)
+            {
+                return Request.Cookies["cooky"].Value;
+            }
+            return string.Empty;
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -35,24 +45,40 @@ namespace ECommercial.UI.Areas.ECommercial.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult LogIn(User user)
+        public ActionResult LogIn(User user, bool? rememberMe)
         {
+
             var result = _userService.IsLoginSuccess(user);
             if (result.Success)
             {
                 Session["UserName"] = result.Data.FirstName;
                 Session["Id"] = result.Data.Id;
                 FormsAuthentication.SetAuthCookie(result.Data.Email, result.Data.RememberMe);
-                return RedirectToAction("Index", "Home");
             }
-            return RedirectToAction("Index");
+            else
+            {
+                ViewBag.warning = "Email veya Şifreniz Hatalı !";
+            }
+            if (rememberMe == true)
+            {
+                HttpCookie httpCookie = new HttpCookie("cooky");
+                httpCookie.Value = user.Email;
+                httpCookie.Expires = DateTime.Now.AddDays(30);
+                Response.Cookies.Add(httpCookie);
+            }
+            return RedirectToAction("Index", "Home");
         }
         public ActionResult LogOut()
         {
             FormsAuthentication.SignOut();
-            Request.Cookies.Clear();
+            //if (Response.Cookies["cooky"] != null)
+            //{
+            //    Response.Cookies["cooky"].Expires = DateTime.Now.AddDays(-1);
+            //}
+            //Request.Cookies.Clear();
             HttpContext.Session.Abandon();
             return RedirectToAction("Index");
         }
     }
+
 }

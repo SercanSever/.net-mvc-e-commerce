@@ -63,7 +63,7 @@
 
                     </div>
                     <div class="navbar-nav ml-auto">
-                        @if (User.Identity.IsAuthenticated)
+                        @if (User.Identity.IsAuthenticated && HttpContext.Current.Session.Count > 0)
                         {
                             <a href="/ECommercial/Auth/LogOut" class="btn btn-outline-secondary btn-sm">Çıkış Yap</a>
                         }

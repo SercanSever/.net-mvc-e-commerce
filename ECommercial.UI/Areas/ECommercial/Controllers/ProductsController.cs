@@ -13,13 +13,13 @@ namespace ECommercial.UI.Areas.ECommercial.Controllers
     {
         private IProductService _productService;
         private ICategoryService _categoryService;
-        private IProductImageService _productImageService;
+        private ICommentService _commentService;
 
-        public ProductsController(IProductService productService, ICategoryService categoryService, IProductImageService productImageService)
+        public ProductsController(IProductService productService, ICategoryService categoryService, IProductImageService productImageService, ICommentService commentService)
         {
             _productService = productService;
             _categoryService = categoryService;
-            _productImageService = productImageService;
+            _commentService = commentService;
         }
         [HttpGet]
         public ActionResult Index(string searchFilter = null)
@@ -77,11 +77,22 @@ namespace ECommercial.UI.Areas.ECommercial.Controllers
             var categoryResult = _categoryService.GetAll();
             var productResult = _productService.GetById(id);
             var productsByCategoryId = _productService.GetProductsWithCategoryId(productResult.Data.CategoryId);
-            if (productResult.Success)
-            {
-                return View(Tuple.Create<Product, List<Category>, List<ProductWithImageDto>, List<ProductWithImageDto>>(productResult.Data, categoryResult.Data, productWithImage.ToList(), productsByCategoryId.Data));
-            }
-            throw new Exception();
+            Tuple<Product, List<Category>, List<ProductWithImageDto>, Comment> tuple = new Tuple<Product, List<Category>, List<ProductWithImageDto>, Comment>(productResult.Data, categoryResult.Data, productsByCategoryId.Data, new Comment());
+            return View(tuple);
+        }
+        [HttpPost]
+        public ActionResult AddComment([Bind(Prefix = "Item4")] Comment comment, [Bind(Prefix = "Item1")] Product product)
+        {
+            comment.UserId = 1;
+            comment.ProductId = product.Id;
+            _commentService.Add(comment);
+            return RedirectToAction("ProductDetails", new { @id = comment.ProductId });
+        }
+        [HttpGet]
+        public ActionResult ListOfComments()
+        {
+            var result = _commentService.GetAll();
+            return PartialView("_PartialCommentList", result.Data);
         }
 
     }
