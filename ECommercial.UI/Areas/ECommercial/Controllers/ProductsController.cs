@@ -15,7 +15,7 @@ namespace ECommercial.UI.Areas.ECommercial.Controllers
         private ICategoryService _categoryService;
         private ICommentService _commentService;
 
-        public ProductsController(IProductService productService, ICategoryService categoryService, IProductImageService productImageService, ICommentService commentService)
+        public ProductsController(IProductService productService, ICategoryService categoryService, ICommentService commentService)
         {
             _productService = productService;
             _categoryService = categoryService;
@@ -73,7 +73,6 @@ namespace ECommercial.UI.Areas.ECommercial.Controllers
         [HttpGet]
         public ActionResult ProductDetails(int id)
         {
-            var productWithImage = _productService.GetProductWithImages().Data.Take(3);
             var categoryResult = _categoryService.GetAll();
             var productResult = _productService.GetById(id);
             var productsByCategoryId = _productService.GetProductsWithCategoryId(productResult.Data.CategoryId);

@@ -12,74 +12,78 @@
         <div class="row">
             <div class="col-lg-8">
                 <div class="product-detail-top">
-                    <div class="row align-items-center">
-                        <div class="col-md-5">
-                            <div class="product-slider-single normal-slider">
-                                @foreach (var product in Model.Item1.ProductImages)
-                                {
-                                    <img src="~/Uploads/@product.Image" alt="Product Image">
+                    @using (Html.BeginForm("AddCart", "Carts", FormMethod.Post))
+                    {
+                        @Html.HiddenFor(x => x.Item1.Id)
+                        <div class="row align-items-center">
+                            <div class="col-md-5">
+                                <div class="product-slider-single normal-slider">
+                                    @foreach (var product in Model.Item1.ProductImages)
+                                    {
+                                        <img src="~/Uploads/@product.Image" alt="Product Image">
 
-                                }
-                            </div>
-                            <div class="product-slider-single-nav normal-slider">
-                                @foreach (var product in Model.Item1.ProductImages)
-                                {
-                                    <div class="slider-nav-img"><img src="~/Uploads/@product.Image" alt="Product Image"></div>
-                                }
-                            </div>
-                        </div>
-                        <div class="col-md-7">
-                            <div class="product-content">
-                                <div class="title"><h2>@Model.Item1.Name</h2></div>
-                                <div class="ratting">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                                <div class="price">
-                                    <h4>Fiyat:</h4>
-                                    @if (Model.Item1.DiscountedPrice != 0)
-                                    {
-                                        <p>@Model.Item1.DiscountedPrice₺ <span>@Model.Item1.UnitPrice</span></p>
-                                    }
-                                    else
-                                    {
-                                        <p>@Model.Item1.UnitPrice</p>
                                     }
                                 </div>
-                                <div class="quantity">
-                                    <h4>Adet:</h4>
-                                    <div class="qty">
-                                        <button class="btn-minus"><i class="fa fa-minus"></i></button>
-                                        <input type="text" value="1">
-                                        <button class="btn-plus"><i class="fa fa-plus"></i></button>
-                                    </div>
+                                <div class="product-slider-single-nav normal-slider">
+                                    @foreach (var product in Model.Item1.ProductImages)
+                                    {
+                                        <div class="slider-nav-img"><img src="~/Uploads/@product.Image" alt="Product Image"></div>
+                                    }
                                 </div>
-                                <div class="p-size">
-                                    <h4>Beden:</h4>
-                                    <div class="btn-group btn-group-sm">
-                                        <button type="button" class="btn">S</button>
-                                        <button type="button" class="btn">M</button>
-                                        <button type="button" class="btn">L</button>
-                                        <button type="button" class="btn">XL</button>
+                            </div>
+                            <div class="col-md-7">
+                                <div class="product-content">
+                                    <div class="title"><h2>@Model.Item1.Name</h2></div>
+                                    <div class="ratting">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
                                     </div>
-                                </div>
-                                <div class="p-color">
-                                    <h4>Renk:</h4>
-                                    <div class="btn-group btn-group-sm">
-                                        <button type="button" class="btn">Beyaz</button>
-                                        <button type="button" class="btn">Siyah</button>
-                                        <button type="button" class="btn">Mavi</button>
+                                    <div class="price">
+                                        <h4>Fiyat:</h4>
+                                        @if (Model.Item1.DiscountedPrice != 0)
+                                        {
+                                            <p>@Model.Item1.DiscountedPrice₺ <span>@Model.Item1.UnitPrice</span></p>
+                                        }
+                                        else
+                                        {
+                                            <p>@Model.Item1.UnitPrice</p>
+                                        }
                                     </div>
-                                </div>
-                                <div class="action">
-                                    <a class="btn" href="#"><i class="fa fa-shopping-cart"></i>Sepete Ekle</a>
+                                    <div class="quantity">
+                                        <h4>Adet:</h4>
+                                        <div class="qty">
+                                            <button type="button" class="btn-minus"><i class="fa fa-minus"></i></button>
+                                            @Html.TextBoxFor(x => x.Item1.OrderQuantity)
+                                            <button type="button" class="btn-plus"><i class="fa fa-plus"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="p-size">
+                                        <h4>Beden:</h4>
+                                        <div class="btn-group btn-group-sm">
+                                            <button type="button" class="btn">S</button>
+                                            <button type="button" class="btn">M</button>
+                                            <button type="button" class="btn">L</button>
+                                            <button type="button" class="btn">XL</button>
+                                        </div>
+                                    </div>
+                                    <div class="p-color">
+                                        <h4>Renk:</h4>
+                                        <div class="btn-group btn-group-sm">
+                                            <button type="button" class="btn">Beyaz</button>
+                                            <button type="button" class="btn">Siyah</button>
+                                            <button type="button" class="btn">Mavi</button>
+                                        </div>
+                                    </div>
+                                    <div class="action">
+                                        <button type="submit" class="btn"><i class="fa fa-shopping-cart"></i>Sepete Ekle</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    }
                 </div>
 
                 <div class="row product-detail-bottom">
@@ -241,5 +245,6 @@
             </div>
         </div>
     </div>
+</div>
 
-    <!-- Product Detail End -->
+<!-- Product Detail End -->

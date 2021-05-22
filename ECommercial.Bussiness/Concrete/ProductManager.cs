@@ -11,6 +11,7 @@ using ECommercial.Entities.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -59,7 +60,7 @@ namespace ECommercial.Bussiness.Concrete
             _productDal.Update(product);
             return new SuccessResult(Messages.ProductUpdated);
         }
-        public IDataResult<List<ProductWithImageDto>> GetProductWithImages()
+        public IDataResult<List<ProductWithImageDto>> GetProductWithImages(Expression<Func<Task, bool>> filter = null)
         {
             using (ECommercialContext context = new ECommercialContext())
             {
@@ -114,6 +115,7 @@ namespace ECommercial.Bussiness.Concrete
             return new SuccessResult();
 
         }
+
 
     }
 }

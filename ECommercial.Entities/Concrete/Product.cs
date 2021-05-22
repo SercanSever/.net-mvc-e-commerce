@@ -21,7 +21,7 @@ namespace ECommercial.Entities.Concrete
         public bool StockStatus { get; set; }
         public decimal PercentOfDiscount { get; set; }
         public decimal DiscountedPrice { get; set; }
-        public int? OrderQuantity { get; set; }
+        public int OrderQuantity { get; set; }
         public bool Status { get; set; }
 
         public int CategoryId { get; set; }

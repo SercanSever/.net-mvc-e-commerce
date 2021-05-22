@@ -22,6 +22,7 @@ namespace ECommercial.Bussiness.DependencyResolvers.Ninject
             Bind<DbContext>().To<ECommercialContext>();
 
             Bind<ICacheManager>().To<MemoryCacheManager>();
+            Bind<ICartService>().To<CartManager>();
 
             Bind<IProductService>().To<ProductManager>();
             Bind<IProductDal>().To<EfProductDal>();

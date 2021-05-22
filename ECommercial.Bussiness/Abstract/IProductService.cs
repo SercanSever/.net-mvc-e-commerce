@@ -4,6 +4,7 @@ using ECommercial.Entities.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,7 +17,7 @@ namespace ECommercial.Bussiness.Abstract
         IResult Add(Product product);
         IResult Update(Product product);
         IResult Delete(Product product);
-        IDataResult<List<ProductWithImageDto>> GetProductWithImages();
+        IDataResult<List<ProductWithImageDto>> GetProductWithImages(Expression<Func<Task, bool>> filter = null);
         IDataResult<List<ProductWithImageDto>> GetProductsWithCategoryId(int id);
         IDataResult<ProductWithImageDto> GetProductWithImagesByProductId(int id);
     }
