@@ -2575,6 +2575,7 @@
     <Content Include="Areas\ECommercial\Views\Shared\_PartialFavoriteCount.cshtml" />
     <Content Include="Areas\ECommercial\Views\Shared\_PartialCommentList.cshtml" />
     <Content Include="Areas\ECommercial\Views\Carts\Index.cshtml" />
+    <Content Include="Areas\ECommercial\Views\Shared\_PartialCartCount.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

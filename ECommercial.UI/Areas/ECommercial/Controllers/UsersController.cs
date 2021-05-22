@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace ECommercial.UI.Areas.ECommercial.Controllers
 {
+
     public class UsersController : Controller
     {
         private IUserService _userService;
@@ -61,7 +62,7 @@ namespace ECommercial.UI.Areas.ECommercial.Controllers
         public ActionResult GetCountWithPartial()
         {
             var result = _userFavoriteService.GetAll().Data.Where(x => x.UserId == Convert.ToInt32(Session["Id"])).ToList();
-            ViewBag.Count = result;
+            ViewBag.Count = result.Count;
             return PartialView("_PartialFavoriteCount");
         }
     }

@@ -20,7 +20,8 @@ namespace ECommercial.UI.Areas.ECommercial.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            var cartList = _cartService.GetCart();
+            return View(cartList.Data);
         }
         [HttpPost]
         public ActionResult AddCart([Bind(Prefix = "Item1")] Product product)
@@ -28,5 +29,19 @@ namespace ECommercial.UI.Areas.ECommercial.Controllers
             _cartService.AddCart(product);
             return RedirectToAction("ProductDetails", "Products", new { @id = product.Id });
         }
+        [HttpGet]
+        public ActionResult DeleteItem(int Id)
+        {
+            _cartService.DeleteFromCart(Id);
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public ActionResult GetCountWithPartial()
+        {
+            var cartListCount = _cartService.GetCart().Data.Count;
+            ViewBag.CartListCount = cartListCount;
+            return PartialView("_PartialCartCount");
+        }
+
     }
 }

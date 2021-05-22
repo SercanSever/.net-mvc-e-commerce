@@ -47,8 +47,12 @@ namespace ECommercial.Bussiness.Concrete
             {
                 ip = HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"];
             }
-            var products = _productService.GetById(product.Id);
-            products.Data.OrderQuantity = product.OrderQuantity;
+            var productModel = _productService.GetById(product.Id);
+            if (product.OrderQuantity == 0)
+            {
+                return new ErrorResult();
+            }
+            productModel.Data.OrderQuantity = product.OrderQuantity;
             var cartList = new List<Product>();
             if (_cacheManager.IsAdd(ip))
             {
@@ -56,7 +60,7 @@ namespace ECommercial.Bussiness.Concrete
                 var productControl = cartList.FirstOrDefault(x => x.Id == product.Id);
                 if (productControl == null)
                 {
-                    cartList.Add(products.Data);
+                    cartList.Add(productModel.Data);
                 }
                 else
                 {
@@ -64,10 +68,10 @@ namespace ECommercial.Bussiness.Concrete
                     productControl.OrderQuantity += product.OrderQuantity;
                     cartList.Add(productControl);
                 }
-                cartList.Add(products.Data);
+                _cacheManager.Add(ip, cartList);
                 return new SuccessResult();
             }
-            cartList.Add(products.Data);
+            cartList.Add(productModel.Data);
             _cacheManager.Add(ip, cartList);
             return new SuccessResult();
         }

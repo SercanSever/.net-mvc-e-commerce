@@ -1,5 +1,5 @@
-﻿@using ECommercial.Entities.Dtos
-@model List<ProductWithImageDto>
+﻿@using ECommercial.Entities.Concrete
+@model List<Product>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/ECommercial/Views/Shared/_ECommercialLayout.cshtml";
@@ -9,37 +9,49 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-8">
+                <h2>@Model.Count adet ürün sepete eklendi.</h2>
                 <div class="cart-page-inner">
                     <div class="table-responsive">
                         <table class="table table-bordered">
                             <thead class="thead-dark">
                                 <tr>
-                                    <th>Product</th>
-                                    <th>Price</th>
-                                    <th>Quantity</th>
-                                    <th>Total</th>
-                                    <th>Remove</th>
+                                    <th>Ürün Adı</th>
+                                    <th>Adet</th>
+                                    <th>Fiyat</th>
+                                    <th>Toplam</th>
+                                    <th>Sil</th>
                                 </tr>
                             </thead>
                             <tbody class="align-middle">
-                                <tr>
-                                    <td>
-                                        <div class="img">
-                                            <a href="#"><img src="img/product-1.jpg" alt="Image"></a>
-                                            <p>Product Name</p>
-                                        </div>
-                                    </td>
-                                    <td>$99</td>
-                                    <td>
-                                        <div class="qty">
-                                            <button class="btn-minus"><i class="fa fa-minus"></i></button>
-                                            <input type="text" value="1">
-                                            <button class="btn-plus"><i class="fa fa-plus"></i></button>
-                                        </div>
-                                    </td>
-                                    <td>$99</td>
-                                    <td><button><i class="fa fa-trash"></i></button></td>
-                                </tr>
+                                @foreach (var products in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            <div class="img">
+                                                <a href="/ECommercial/Products/ProductDetails/@products.Id">
+                                                    <p>@products.Name</p>
+                                                </a>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="qty">
+                                                <button class="btn-minus"><i class="fa fa-minus"></i></button>
+                                                <input value="@products.OrderQuantity" />
+                                                <button class="btn-plus"><i class="fa fa-plus"></i></button>
+                                            </div>
+                                        </td>
+                                        <td>@products.UnitPrice ₺</td>
+                                        <td>
+                                            @{
+                                                var total = Model.Sum(x => x.UnitPrice * x.OrderQuantity);
+                                                @total
+                                            }
+                                        </td>
+                                        <td><a href="/ECommercial/Carts/DeleteItem/@products.Id"><i class="fa fa-trash"></i></a></td>
+                                    </tr>
+
+                                }
+
                             </tbody>
                         </table>
                     </div>

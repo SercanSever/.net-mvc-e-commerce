@@ -37,6 +37,10 @@ namespace ECommercial.Bussiness.Concrete
                 {
                     return new SuccessDataResult<User>(userModel);
                 }
+                else
+                {
+                    return new ErrorDataResult<User>();
+                }
             }
             return new ErrorDataResult<User>();
         }

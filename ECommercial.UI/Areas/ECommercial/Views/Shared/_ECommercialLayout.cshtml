@@ -30,7 +30,7 @@
             <div class="row">
                 <div class="col-sm-6">
                     <i class="fa fa-envelope"></i>
-                    support@email.com
+                    <a href="">support@email.com</a>
                 </div>
                 <div class="col-sm-6">
                     <i class="fa fa-phone-alt"></i>
@@ -63,14 +63,14 @@
 
                     </div>
                     <div class="navbar-nav ml-auto">
-                        @if (User.Identity.IsAuthenticated && HttpContext.Current.Session.Count > 0)
-                        {
-                            <a href="/ECommercial/Auth/LogOut" class="btn btn-outline-secondary btn-sm">Çıkış Yap</a>
-                        }
-                        else
-                        {
-                            <a href="/ECommercial/Auth/Index" class="btn btn-outline-info btn-sm">Giriş Yap</a>
-                        }
+                        @if (User.Identity.IsAuthenticated@*&& HttpContext.Current.Session.Count > 0*@)
+{
+<a href="/ECommercial/Auth/LogOut" class="btn btn-outline-secondary btn-sm">Çıkış Yap</a>
+}
+else
+{
+<a href="/ECommercial/Auth/Index" class="btn btn-outline-info btn-sm">Giriş Yap</a>
+}
                     </div>
                 </div>
             </nav>
@@ -100,12 +100,9 @@
                 <div class="col-md-3">
                     <div class="user">
 
-                        @Html.Partial("_PartialFavoriteCount")
+                        @Html.Action("GetCountWithPartial", "Users")
+                        @Html.Action("GetCountWithPartial", "Carts")
 
-                        <a href="cart.html" class="btn cart">
-                            <i class="fa fa-shopping-cart"></i>
-                            <span>0</span>
-                        </a>
                     </div>
                 </div>
             </div>
