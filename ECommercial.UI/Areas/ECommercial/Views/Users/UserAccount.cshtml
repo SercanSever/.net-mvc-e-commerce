@@ -1,5 +1,5 @@
 ﻿@using ECommercial.Entities.Concrete
-@model UserAddress
+@model Tuple<UserAddress, User>
 @{
     ViewBag.Title = "UserAccount";
     Layout = "~/Areas/ECommercial/Views/Shared/_ECommercialLayout.cshtml";
@@ -12,11 +12,10 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
-                    <a class="nav-link" id="dashboard-nav" data-toggle="pill" href="#dashboard-tab" role="tab" aria-selected="false"><i class="fa fa-tachometer-alt"></i>Dashboard</a>
                     <a class="nav-link active" id="orders-nav" data-toggle="pill" href="#orders-tab" role="tab" aria-selected="true"><i class="fa fa-shopping-bag"></i>Orders</a>
                     <a class="nav-link" id="payment-nav" data-toggle="pill" href="#payment-tab" role="tab" aria-selected="false"><i class="fa fa-credit-card"></i>Payment Method</a>
                     <a class="nav-link" id="address-nav" data-toggle="pill" href="#address-tab" role="tab" aria-selected="false"><i class="fa fa-map-marker-alt"></i>Adresler</a>
-                    <a class="nav-link" id="account-nav" data-toggle="pill" href="#account-tab" role="tab" aria-selected="false"><i class="fa fa-user"></i>Account Details</a>
+                    <a class="nav-link" id="account-nav" data-toggle="pill" href="#account-tab" role="tab" aria-selected="false"><i class="fa fa-user"></i>Hesap Bilgiler</a>
                     <a class="nav-link" href="index.html"><i class="fa fa-sign-out-alt"></i>Logout</a>
                 </div>
             </div>
@@ -77,39 +76,45 @@
                         </p>
                     </div>
                     <div class="tab-pane fade" id="address-tab" role="tabpanel" aria-labelledby="address-nav">
-                        <h4>@Model.AddressName</h4>
+                        <h4>@Model.Item1.AddressName</h4>
                         <div class="row">
                             <div class="col-md-6">
-                                <h5>@Model.City / @Model.Country</h5>
-                                <p>@Model.Address</p>
-                                <p>Telefon: @Model.Phone</p>
-                                <button class="btn">Adresi Güncelle</button>
+                                <h5>@Model.Item1.City / @Model.Item1.Country</h5>
+                                <p>@Model.Item1.Address</p>
+                                <p>Telefon: @Model.Item1.Phone</p>
+                                <a class="btn" href="/ECommercial/Users/UpdateAddress/@Model.Item1.Id">Adresi Güncelle</a>
                             </div>
                         </div>
                     </div>
                     <div class="tab-pane fade" id="account-tab" role="tabpanel" aria-labelledby="account-nav">
-                        <h4>Account Details</h4>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <input class="form-control" type="text" placeholder="First Name">
-                            </div>
-                            <div class="col-md-6">
-                                <input class="form-control" type="text" placeholder="Last Name">
-                            </div>
-                            <div class="col-md-6">
-                                <input class="form-control" type="text" placeholder="Mobile">
-                            </div>
-                            <div class="col-md-6">
-                                <input class="form-control" type="text" placeholder="Email">
-                            </div>
-                            <div class="col-md-12">
-                                <input class="form-control" type="text" placeholder="Address">
-                            </div>
-                            <div class="col-md-12">
-                                <button class="btn">Update Account</button>
-                                <br><br>
+                        <div id="reviews" class="container tab-pane fade active show">
+                            <div class="reviews-submitted">
+                                <div class="reviewer p-sm-3"><h2>@Model.Item1.User.FirstName @Model.Item1.User.LastName</h2><span><strong>@Model.Item1.User.Email</strong> - <strong>@Model.Item1.User.Phone</strong></span></div>
                             </div>
                         </div>
+                        <h4>Hesap Bilgileri</h4>
+                        @using (Html.BeginForm("UpdateUserInfo", "Users", FormMethod.Post))
+                        {
+                            <div class="row">
+                                <div class="col-md-6">
+                                    @Html.TextBoxFor(x => x.Item2.FirstName, new { @class = "form-control", @type = "text", @placeholder = "İsim" })
+                                </div>
+                                <div class="col-md-6">
+                                    @Html.TextBoxFor(x => x.Item2.LastName, new { @class = "form-control", @type = "text", @placeholder = "Soyisim" })
+                                </div>
+                                <div class="col-md-6">
+                                    @Html.TextBoxFor(x => x.Item2.Phone, new { @class = "form-control", @type = "text", @placeholder = "Tel" })
+                                </div>
+                                <div class="col-md-6">
+                                    @Html.TextBoxFor(x => x.Item2.Email, new { @class = "form-control", @type = "email", @placeholder = "Email" })
+                                </div>
+                                <div class="col-md-12">
+                                    <button class="btn">Hesap Bilgilerini Güncelle</button>
+                                    <br><br>
+                                </div>
+                            </div>
+                        }
+
                         <h4>Password change</h4>
                         <div class="row">
                             <div class="col-md-12">

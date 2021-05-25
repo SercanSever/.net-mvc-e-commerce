@@ -74,7 +74,8 @@ namespace ECommercial.UI.Areas.ECommercial.Controllers
         {
             var userId = Convert.ToInt32(Session["Id"]);
             var result = _userAddressService.GetById(userId);
-            return View(result.Data);
+            var userInfoResult = _userService.GetById(userId);
+            return View(Tuple.Create<UserAddress, User>(result.Data, userInfoResult.Data));
         }
         [Authorize]
         [HttpGet]
@@ -87,6 +88,7 @@ namespace ECommercial.UI.Areas.ECommercial.Controllers
         [HttpPost]
         public ActionResult UpdateAddress(UserAddress userAddress)
         {
+            userAddress.UserId = Convert.ToInt32(Session["Id"]);
             var result = _userAddressService.Update(userAddress);
             if (result.Success)
             {
@@ -94,5 +96,21 @@ namespace ECommercial.UI.Areas.ECommercial.Controllers
             }
             throw new Exception();
         }
+        [Authorize]
+        [HttpPost]
+        public ActionResult UpdateUserInfo([Bind(Prefix = "Item2")] User user)
+        {
+            user.Id = Convert.ToInt32(Session["Id"]);
+            user.Status = true;
+            user.PasswordSalt = user.PasswordSalt;
+            user.PaswordHash = user.PaswordHash;
+            var result = _userService.Update(user);
+            if (result.Success)
+            {
+                return RedirectToAction("UserAccount");
+            }
+            throw new Exception();
+        }
+
     }
 }

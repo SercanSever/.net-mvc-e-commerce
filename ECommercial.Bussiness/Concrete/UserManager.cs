@@ -57,12 +57,13 @@ namespace ECommercial.Bussiness.Concrete
 
         public IDataResult<User> GetById(int productId)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<User>(_userDal.Get(x => x.Id == productId));
         }
 
         public IResult Update(User user)
         {
-            throw new NotImplementedException();
+            _userDal.Update(user);
+            return new SuccessResult();
         }
 
         private IResult CryptoUserPassword(User user)
