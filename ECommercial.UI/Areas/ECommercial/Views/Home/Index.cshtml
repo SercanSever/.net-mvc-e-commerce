@@ -145,14 +145,13 @@
                                 <img src="~/Uploads/@product.Image" alt="Product Image">
                             </a>
                             <div class="product-action">
-                                <a href="#"><i class="fa fa-cart-plus"></i></a>
                                 <a href="#"><i class="fa fa-heart"></i></a>
                                 <a href="/ECommercial/Products/ProductDetails/@product.ProductId"><i class="fa fa-search"></i></a>
                             </div>
                         </div>
                         <div class="product-price">
-                            <h3><span>$</span>99</h3>
-                            <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Sepete Ekle</a>
+                            <h3>@product.UnitPrice<span>₺</span></h3>
+                            <a class="btn" href="/ECommercial/Products/ProductDetails/@product.ProductId"><i class="fa fa-search"></i>İncele</a>
                         </div>
                     </div>
                 </div>
