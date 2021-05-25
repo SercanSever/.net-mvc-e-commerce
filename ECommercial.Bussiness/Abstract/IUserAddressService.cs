@@ -8,10 +8,11 @@ using System.Threading.Tasks;
 
 namespace ECommercial.Bussiness.Abstract
 {
-    public interface ICommentService
+    public interface IUserAddressService
     {
-        IDataResult<List<Comment>> GetAllWithProductId(int Id);
-        IDataResult<Comment> GetById(int commentId);
-        IResult Add(Comment comment);
+        IDataResult<List<UserAddress>> GetAll();
+        IDataResult<UserAddress> GetById(int userAddressId);
+        IResult Add(UserAddress userAddress);
+        IResult Update(UserAddress userAddress);
     }
 }

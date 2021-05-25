@@ -27,9 +27,9 @@ namespace ECommercial.Bussiness.Concrete
             return new SuccessResult();
         }
 
-        public IDataResult<List<Comment>> GetAll()
+        public IDataResult<List<Comment>> GetAllWithProductId(int Id)
         {
-            return new SuccessDataResult<List<Comment>>(_commentDal.GetAll());
+            return new SuccessDataResult<List<Comment>>(_commentDal.GetAll(x => x.ProductId == Id));
         }
 
         public IDataResult<Comment> GetById(int commentId)

@@ -1,4 +1,5 @@
 ﻿using ECommercial.Bussiness.Abstract;
+using ECommercial.Core.Utilities.Results;
 using ECommercial.Entities.Concrete;
 using ECommercial.Entities.Dtos;
 using System;
@@ -15,12 +16,14 @@ namespace ECommercial.UI.Areas.ECommercial.Controllers
         private IUserService _userService;
         private IUserFavoriteService _userFavoriteService;
         private IProductService _productService;
+        private IUserAddressService _userAddressService;
 
-        public UsersController(IUserService userService, IUserFavoriteService userFavoriteService, IProductService productService)
+        public UsersController(IUserService userService, IUserFavoriteService userFavoriteService, IProductService productService, IUserAddressService userAddressService)
         {
             _userService = userService;
             _userFavoriteService = userFavoriteService;
             _productService = productService;
+            _userAddressService = userAddressService;
 
         }
         [Authorize]
@@ -64,6 +67,32 @@ namespace ECommercial.UI.Areas.ECommercial.Controllers
             var result = _userFavoriteService.GetAll().Data.Where(x => x.UserId == Convert.ToInt32(Session["Id"])).ToList();
             ViewBag.Count = result.Count;
             return PartialView("_PartialFavoriteCount");
+        }
+        [Authorize]
+        [HttpGet]
+        public ActionResult UserAccount()
+        {
+            var userId = Convert.ToInt32(Session["Id"]);
+            var result = _userAddressService.GetById(userId);
+            return View(result.Data);
+        }
+        [Authorize]
+        [HttpGet]
+        public ActionResult UpdateAddress(int Id)
+        {
+            var result = _userAddressService.GetById(Id);
+            return View(result.Data);
+        }
+        [Authorize]
+        [HttpPost]
+        public ActionResult UpdateAddress(UserAddress userAddress)
+        {
+            var result = _userAddressService.Update(userAddress);
+            if (result.Success)
+            {
+                return RedirectToAction("UserAccount");
+            }
+            throw new Exception();
         }
     }
 }

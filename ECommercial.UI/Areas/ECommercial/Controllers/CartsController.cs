@@ -42,6 +42,5 @@ namespace ECommercial.UI.Areas.ECommercial.Controllers
             ViewBag.CartListCount = cartListCount;
             return PartialView("_PartialCartCount");
         }
-
     }
 }

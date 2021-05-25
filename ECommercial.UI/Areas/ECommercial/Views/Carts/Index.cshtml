@@ -9,7 +9,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-8">
-                <h2>@Model.Count adet ürün sepete eklendi.</h2>
+                <h2>Sepetteki Ürün Sayısı / @Model.Count</h2>
                 <div class="cart-page-inner">
                     <div class="table-responsive">
                         <table class="table table-bordered">
@@ -34,11 +34,7 @@
                                             </div>
                                         </td>
                                         <td>
-                                            <div class="qty">
-                                                <button class="btn-minus"><i class="fa fa-minus"></i></button>
-                                                <input value="@products.OrderQuantity" />
-                                                <button class="btn-plus"><i class="fa fa-plus"></i></button>
-                                            </div>
+                                            @products.OrderQuantity
                                         </td>
                                         <td>@products.UnitPrice ₺</td>
                                         <td>
@@ -63,14 +59,28 @@
                         <div class="col-md-12">
                             <div class="cart-summary">
                                 <div class="cart-content">
-                                    <h1>Cart Summary</h1>
-                                    <p>Sub Total<span>$99</span></p>
-                                    <p>Shipping Cost<span>$1</span></p>
-                                    <h2>Grand Total<span>$100</span></h2>
+                                    <h1>Sepet Özeti</h1>
+                                    <p>
+                                        Toplam Tutar<span>
+                                            @{
+                                                var totalPrice = Model.Sum(x => x.UnitPrice * x.OrderQuantity);
+                                                @totalPrice
+                                            } ₺
+                                        </span>
+                                    </p>
+                                    <p>Kargo Ücreti<span>10 ₺</span></p>
+                                    <h2>
+                                        Ödenecek Tutar<span>
+                                            @{
+                                                var grandTotal = Model.Sum(x => x.UnitPrice * x.OrderQuantity) + 10;
+                                                @grandTotal
+                                            }
+                                            ₺
+                                        </span>
+                                    </h2>
                                 </div>
                                 <div class="cart-btn">
-                                    <button>Update Cart</button>
-                                    <button>Checkout</button>
+                                    <button class="offset-3">Satın Al</button>
                                 </div>
                             </div>
                         </div>

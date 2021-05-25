@@ -52,6 +52,7 @@ namespace ECommercial.UI.Areas.ECommercial.Controllers
             if (result.Success)
             {
                 Session["UserName"] = result.Data.FirstName;
+                Session["LastName"] = result.Data.LastName;
                 Session["Email"] = result.Data.Email;
                 Session["Id"] = result.Data.Id;
                 FormsAuthentication.SetAuthCookie(user.Email, true);

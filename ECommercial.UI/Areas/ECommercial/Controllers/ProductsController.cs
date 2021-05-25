@@ -77,6 +77,8 @@ namespace ECommercial.UI.Areas.ECommercial.Controllers
             var productResult = _productService.GetById(id);
             var productsByCategoryId = _productService.GetProductsWithCategoryId(productResult.Data.CategoryId);
             Tuple<Product, List<Category>, List<ProductWithImageDto>, Comment> tuple = new Tuple<Product, List<Category>, List<ProductWithImageDto>, Comment>(productResult.Data, categoryResult.Data, productsByCategoryId.Data, new Comment());
+            var count = _commentService.GetAllWithProductId(id).Data.Count;
+            ViewBag.CommentCount = count;
             return View(tuple);
         }
         [HttpPost]
@@ -88,9 +90,9 @@ namespace ECommercial.UI.Areas.ECommercial.Controllers
             return RedirectToAction("ProductDetails", new { @id = comment.ProductId });
         }
         [HttpGet]
-        public ActionResult ListOfComments()
+        public ActionResult ListOfComments(int Id)
         {
-            var result = _commentService.GetAll();
+            var result = _commentService.GetAllWithProductId(Id);
             return PartialView("_PartialCommentList", result.Data);
         }
 

@@ -91,6 +91,7 @@ namespace ECommercial.Bussiness.Concrete
             return new SuccessResult();
         }
 
+     
         public IDataResult<List<Product>> GetAll()
         {
             string key = "products";

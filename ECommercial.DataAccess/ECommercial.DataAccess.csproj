@@ -55,12 +55,14 @@
     <Compile Include="Abstract\ICommentDal.cs" />
     <Compile Include="Abstract\IProductDal.cs" />
     <Compile Include="Abstract\IProductImageDal.cs" />
+    <Compile Include="Abstract\IUserAddressDal.cs" />
     <Compile Include="Abstract\IUserDal.cs" />
     <Compile Include="Abstract\IUserFavoriteDal.cs" />
     <Compile Include="Concrete\EntityFramework\EfCategoryDal.cs" />
     <Compile Include="Concrete\EntityFramework\EfCommentDal.cs" />
     <Compile Include="Concrete\EntityFramework\EfProductDal.cs" />
     <Compile Include="Concrete\EntityFramework\EfProductImageDal.cs" />
+    <Compile Include="Concrete\EntityFramework\EfUserAddressDal.cs" />
     <Compile Include="Concrete\EntityFramework\EfUserDal.cs" />
     <Compile Include="Concrete\EntityFramework\EfUserFavoriteDal.cs" />
     <Compile Include="Context\ECommercialContext.cs" />

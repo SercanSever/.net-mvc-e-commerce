@@ -41,6 +41,9 @@ namespace ECommercial.Bussiness.DependencyResolvers.Ninject
 
             Bind<ICommentService>().To<CommentManager>();
             Bind<ICommentDal>().To<EfCommentDal>();
+
+            Bind<IUserAddressService>().To<UserAddressManager>();
+            Bind<IUserAddressDal>().To<EfUserAddressDal>();
         }
     }
 }
