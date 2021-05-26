@@ -34,6 +34,10 @@ namespace ECommercial.Bussiness.Concrete
         {
             return new SuccessDataResult<UserAddress>(_userAddressDal.Get(x => x.Id == userAddressId));
         }
+        public IDataResult<UserAddress> GetByUserId(int userAddressId)
+        {
+            return new SuccessDataResult<UserAddress>(_userAddressDal.Get(x => x.UserId == userAddressId));
+        }
 
         public IResult Update(UserAddress userAddress)
         {

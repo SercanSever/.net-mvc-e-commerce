@@ -21,7 +21,6 @@ namespace ECommercial.Bussiness.Concrete
 
         public IResult Add(Comment comment)
         {
-            comment.Date = DateTime.Now;
             comment.Status = false;
             _commentDal.Add(comment);
             return new SuccessResult();

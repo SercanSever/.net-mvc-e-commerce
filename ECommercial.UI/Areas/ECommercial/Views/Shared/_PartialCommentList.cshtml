@@ -1,18 +1,23 @@
 ﻿@using ECommercial.Entities.Concrete
 @model List<Comment>
 
-
 @foreach (var comments in Model)
 {
-    <div class="reviewer">@comments.User.FirstName - <span>@comments.Date</span></div>
-    <div class="ratting">
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-    </div>
-    <p>
-        @comments.Content
-    </p>
+    if (comments.Status)
+    {
+        <div class="reviewer">@comments.User.FirstName - <span>@comments.Date</span></div>
+        <div class="ratting">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+        </div>
+        <p>
+            @comments.Content
+        </p>
+    }
+
 }
+
+

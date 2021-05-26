@@ -26,7 +26,7 @@ namespace ECommercial.UI.Areas.AdministratorArea.Controllers
         [HttpGet]
         public ActionResult UserDetails(int Id)
         {
-            var result = _userAddressService.GetById(Id);
+            var result = _userAddressService.GetByUserId(Id);
             return View(result.Data);
         }
     }

@@ -24,6 +24,7 @@ namespace ECommercial.Bussiness.Concrete
         {
             BusinessRules.Run(CryptoUserPassword(user));
             user.Status = true;
+            user.DateOfSign = DateTime.Now;
             _userDal.Add(user);
             return new SuccessResult();
         }

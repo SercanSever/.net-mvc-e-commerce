@@ -39,7 +39,7 @@ namespace ECommercial.UI.Areas.ECommercial.Controllers
             var result = _userService.Add(user);
             if (result.Success)
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index");
             }
             throw new Exception();
         }

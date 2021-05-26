@@ -1,0 +1,52 @@
+﻿@using ECommercial.Entities.Concrete
+@model UserAddress
+@{
+    ViewBag.Title = "AddAddress";
+    Layout = "~/Areas/ECommercial/Views/Shared/_ECommercialLayout.cshtml";
+}
+@using (Html.BeginForm("AddAddress", "Users", FormMethod.Post))
+{
+    <div class="checkout">
+        <div class="conteiner-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="checkout-inner">
+                        <div class="billing-address">
+                            <h2>Adres Bilgilerini Güncelle</h2>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Adres Adı</label>
+                                    @Html.TextBoxFor(x => x.AddressName, new { @class = "form-control", @type = "text", @placeholder = "Ev & Ofis.." })
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Telefon</label>
+                                    @Html.TextBoxFor(x => x.Phone, new { @class = "form-control", @type = "text", @placeholder = "Tel : " })
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Şehir</label>
+                                    @Html.TextBoxFor(x => x.City, new { @class = "form-control", @type = "text", @placeholder = "Şehir" })
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Ülke</label>
+                                    @Html.TextBoxFor(x => x.Country, new { @class = "form-control", @type = "text", @placeholder = "Ülke" })
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Adres</label>
+                                    @Html.TextAreaFor(x => x.Address, new { @class = "form-control", @type = "text", @placeholder = "Adres" })
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Adres Açıklaması</label>
+                                    @Html.TextAreaFor(x => x.AddressDescription, new { @class = "form-control", @type = "text", @placeholder = "Adres Açıklaması" })
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-outline-success">Adres Ekle</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+

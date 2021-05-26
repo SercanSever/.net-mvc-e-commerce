@@ -77,22 +77,23 @@ namespace ECommercial.UI.Areas.ECommercial.Controllers
             var productResult = _productService.GetById(id);
             var productsByCategoryId = _productService.GetProductsWithCategoryId(productResult.Data.CategoryId);
             Tuple<Product, List<Category>, List<ProductWithImageDto>, Comment> tuple = new Tuple<Product, List<Category>, List<ProductWithImageDto>, Comment>(productResult.Data, categoryResult.Data, productsByCategoryId.Data, new Comment());
-            var count = _commentService.GetAllWithProductId(id).Data.Count;
+            var count = _commentService.GetAllWithProductId(id).Data.Where(x=>x.Status==true).ToList().Count;
             ViewBag.CommentCount = count;
             return View(tuple);
         }
         [HttpPost]
         public ActionResult AddComment([Bind(Prefix = "Item4")] Comment comment, [Bind(Prefix = "Item1")] Product product)
         {
-            comment.UserId = 1;
+            comment.UserId = Convert.ToInt32(Session["Id"]);
             comment.ProductId = product.Id;
+            comment.Date = DateTime.Now;
             _commentService.Add(comment);
             return RedirectToAction("ProductDetails", new { @id = comment.ProductId });
         }
         [HttpGet]
         public ActionResult ListOfComments(int Id)
         {
-            var result = _commentService.GetAllWithProductId(Id).Data.Where(x => x.Status == true);
+            var result = _commentService.GetAllWithProductId(Id).Data;
             return PartialView("_PartialCommentList", result);
         }
 

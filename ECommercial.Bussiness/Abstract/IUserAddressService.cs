@@ -14,5 +14,6 @@ namespace ECommercial.Bussiness.Abstract
         IDataResult<UserAddress> GetById(int userAddressId);
         IResult Add(UserAddress userAddress);
         IResult Update(UserAddress userAddress);
+        IDataResult<UserAddress> GetByUserId(int userAddressId);
     }
 }

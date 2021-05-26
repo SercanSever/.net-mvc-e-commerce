@@ -73,9 +73,23 @@ namespace ECommercial.UI.Areas.ECommercial.Controllers
         public ActionResult UserAccount()
         {
             var userId = Convert.ToInt32(Session["Id"]);
-            var result = _userAddressService.GetById(userId);
+            var result = _userAddressService.GetByUserId(userId);
             var userInfoResult = _userService.GetById(userId);
             return View(Tuple.Create<UserAddress, User>(result.Data, userInfoResult.Data));
+        }
+        [Authorize]
+        [HttpGet]
+        public ActionResult AddAddress()
+        {
+            return View();
+        }
+        [Authorize]
+        [HttpPost]
+        public ActionResult AddAddress(UserAddress userAddress)
+        {
+            userAddress.UserId = Convert.ToInt32(Session["Id"]);
+            _userAddressService.Add(userAddress);
+            return RedirectToAction("UserAccount");
         }
         [Authorize]
         [HttpGet]
