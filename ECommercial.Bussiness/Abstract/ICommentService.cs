@@ -13,5 +13,7 @@ namespace ECommercial.Bussiness.Abstract
         IDataResult<List<Comment>> GetAllWithProductId(int Id);
         IDataResult<Comment> GetById(int commentId);
         IResult Add(Comment comment);
+        IDataResult<List<Comment>> GetAll();
+        IResult Update(Comment comment);
     }
 }

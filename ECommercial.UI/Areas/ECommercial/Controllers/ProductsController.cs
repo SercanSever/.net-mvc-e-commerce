@@ -92,8 +92,8 @@ namespace ECommercial.UI.Areas.ECommercial.Controllers
         [HttpGet]
         public ActionResult ListOfComments(int Id)
         {
-            var result = _commentService.GetAllWithProductId(Id);
-            return PartialView("_PartialCommentList", result.Data);
+            var result = _commentService.GetAllWithProductId(Id).Data.Where(x => x.Status == true);
+            return PartialView("_PartialCommentList", result);
         }
 
     }

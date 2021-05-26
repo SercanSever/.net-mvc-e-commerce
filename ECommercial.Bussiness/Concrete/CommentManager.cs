@@ -22,9 +22,14 @@ namespace ECommercial.Bussiness.Concrete
         public IResult Add(Comment comment)
         {
             comment.Date = DateTime.Now;
-            comment.Status = true;
+            comment.Status = false;
             _commentDal.Add(comment);
             return new SuccessResult();
+        }
+
+        public IDataResult<List<Comment>> GetAll()
+        {
+            return new SuccessDataResult<List<Comment>>(_commentDal.GetAll());
         }
 
         public IDataResult<List<Comment>> GetAllWithProductId(int Id)
@@ -35,6 +40,12 @@ namespace ECommercial.Bussiness.Concrete
         public IDataResult<Comment> GetById(int commentId)
         {
             return new SuccessDataResult<Comment>(_commentDal.Get(x => x.CommentId == commentId));
+        }
+
+        public IResult Update(Comment comment)
+        {
+            _commentDal.Update(comment);
+            return new SuccessResult();
         }
     }
 }

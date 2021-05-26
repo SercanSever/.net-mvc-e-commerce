@@ -132,6 +132,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\AdministratorArea\AdministratorAreaAreaRegistration.cs" />
     <Compile Include="Areas\AdministratorArea\Controllers\CategoriesController.cs" />
+    <Compile Include="Areas\AdministratorArea\Controllers\CommentsController.cs" />
+    <Compile Include="Areas\AdministratorArea\Controllers\CustomersController.cs" />
     <Compile Include="Areas\AdministratorArea\Controllers\HomeController.cs" />
     <Compile Include="Areas\AdministratorArea\Controllers\ProductsController.cs" />
     <Compile Include="Areas\AdministratorArea\Data\CategoryListViewModel.cs" />
@@ -2578,6 +2580,9 @@
     <Content Include="Areas\ECommercial\Views\Shared\_PartialCartCount.cshtml" />
     <Content Include="Areas\ECommercial\Views\Users\UserAccount.cshtml" />
     <Content Include="Areas\ECommercial\Views\Users\UpdateAddress.cshtml" />
+    <Content Include="Areas\AdministratorArea\Views\Comments\Index.cshtml" />
+    <Content Include="Areas\AdministratorArea\Views\Comments\ApprovedComments.cshtml" />
+    <Content Include="Areas\AdministratorArea\Views\Customers\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

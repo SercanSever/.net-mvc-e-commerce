@@ -1,0 +1,70 @@
+﻿@using ECommercial.Entities.Concrete
+@model List<Comment>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/AdministratorArea/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title"><strong>Yorumlar</strong></h3>
+            </div>
+            <!-- ./card-header -->
+            <div class="card-body">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Kullanıcı</th>
+                            <th>Ürün</th>
+                            <th>Tarih</th>
+                            <th>Durum</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var comment in Model)
+                        {
+                        <tr data-widget="expandable-table" aria-expanded="false">
+                            <td>@comment.CommentId</td>
+                            <td>@comment.User.FirstName @comment.User.LastName</td>
+                            <td>@comment.Product.Name</td>
+                            <td>@comment.Date</td>
+                            @if (!comment.Status)
+                            {
+                                <td><img src="~/Uploads/red.png" alt="Alternate Text" width="20"/></td>
+                            }
+                            else
+                            {
+                                <td><img src="~/Uploads/green.png" alt="Alternate Text" width="20" /></td>
+                            }
+
+                            @if (!comment.Status)
+                            {
+                                <td><a class="btn btn-outline-info" href="/AdministratorArea/Comments/ChangeStatus/@comment.CommentId">Onayla</a></td>
+                            }
+                            else
+                            {
+                                <td><a class="btn btn-outline-danger" href="/AdministratorArea/Comments/ChangeStatus/@comment.CommentId">Kaldır</a></td>
+                            }
+
+                        </tr>
+                            <tr class="expandable-body d-none">
+                                <td colspan="6">
+                                    <p style="display: none;">
+                                        @comment.Content
+                                    </p>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
+</div>
+
