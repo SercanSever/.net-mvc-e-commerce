@@ -10,15 +10,23 @@ namespace ECommercial.UI.Areas.AdministratorArea.Controllers
     public class CustomersController : Controller
     {
         private IUserService _userService;
+        private IUserAddressService _userAddressService;
 
-        public CustomersController(IUserService userService)
+        public CustomersController(IUserService userService, IUserAddressService userAddressService)
         {
             _userService = userService;
+            _userAddressService = userAddressService;
         }
-
+        [HttpGet]
         public ActionResult Index()
         {
             var result = _userService.GetAll();
+            return View(result.Data);
+        }
+        [HttpGet]
+        public ActionResult UserDetails(int Id)
+        {
+            var result = _userAddressService.GetById(Id);
             return View(result.Data);
         }
     }

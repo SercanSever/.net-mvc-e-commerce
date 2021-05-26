@@ -2583,6 +2583,7 @@
     <Content Include="Areas\AdministratorArea\Views\Comments\Index.cshtml" />
     <Content Include="Areas\AdministratorArea\Views\Comments\ApprovedComments.cshtml" />
     <Content Include="Areas\AdministratorArea\Views\Customers\Index.cshtml" />
+    <Content Include="Areas\AdministratorArea\Views\Customers\UserDetails.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

@@ -52,7 +52,7 @@ namespace ECommercial.Bussiness.Concrete
 
         public IDataResult<List<User>> GetAll()
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<User>>(_userDal.GetAll());
         }
 
         public IDataResult<User> GetById(int productId)
