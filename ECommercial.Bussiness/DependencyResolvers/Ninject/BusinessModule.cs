@@ -44,6 +44,12 @@ namespace ECommercial.Bussiness.DependencyResolvers.Ninject
 
             Bind<IUserAddressService>().To<UserAddressManager>();
             Bind<IUserAddressDal>().To<EfUserAddressDal>();
+
+            Bind<IOrderService>().To<OrderManager>();
+            Bind<IOrderDal>().To<EfOrderDal>();
+
+            Bind<IOrderDetailService>().To<OrderDetailManager>();
+            Bind<IOrderDetailDal>().To<EfOrderDetailDal>();
         }
     }
 }

@@ -1,0 +1,125 @@
+﻿@using ECommercial.Entities.Concrete
+@model List<Product>
+@{
+    ViewBag.Title = "Payment";
+    Layout = "~/Areas/ECommercial/Views/Shared/_ECommercialLayout.cshtml";
+}
+
+<div class="container-fluid shadow">
+    <div class="row">
+        <div class="col-md-4 p-md-5">
+            <div class="checkout-inner mb-md-5">
+                <div class="checkout-summary">
+                    <h1>Sepet Özeti</h1>
+                    <p>
+                        Toplam Tutar<span>
+                            @{
+                                var totalPrice = Model.Sum(x => x.UnitPrice * x.OrderQuantity);
+                                @totalPrice
+                            } ₺
+                        </span>
+                    </p>
+                    <p>Kargo Ücreti<span>10 ₺</span></p>
+                    <h2>
+                        Ödenecek Tutar<span>
+                            @{
+                                var grandTotal = Model.Sum(x => x.UnitPrice * x.OrderQuantity) + 10;
+                                @grandTotal
+                            }
+                            ₺
+                        </span>
+                    </h2>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="col-lg-8 p-md-5">
+            <h2>Ürünler</h2>
+            <div class="cart-page-inner">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Ürün Adı</th>
+                                <th>Adet</th>
+                                <th>Fiyat</th>
+                                <th>Toplam</th>
+
+                            </tr>
+                        </thead>
+                        <tbody class="align-middle">
+                            @foreach (var products in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        <div class="img">
+                                            <a href="/ECommercial/Products/ProductDetails/@products.Id">
+                                                <p>@products.Name</p>
+                                            </a>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        @products.OrderQuantity
+                                    </td>
+                                    <td>@products.UnitPrice ₺</td>
+                                    <td>
+                                        @{
+                                            var total = Model.Sum(x => x.UnitPrice * x.OrderQuantity);
+                                            @total
+                                        }
+                                    </td>
+
+                                </tr>
+
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid mt-md-5 shadow">
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="checkout-inner">
+                <div class="billing-address">
+                    <h2>Kart Bilgileri</h2>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>Kart Üzerindeki İsim</label>
+                            <input class="form-control" type="text" placeholder="Ad Soyad">
+                        </div>
+                        <div class="col-md-12">
+                            <label>Kart Numarası</label>
+                            <input class="form-control" type="text" placeholder="Kart No">
+                        </div>
+                        <div class="col-md-6">
+                            <label>Son Kullanma Tarihi</label>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <input class="form-control" type="text" placeholder="Ay">
+                                </div>/
+                                <div class="col-md-3">
+                                    <input class="form-control" type="text" placeholder="Yıl">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label>Cvc</label>
+                            <input class="form-control" type="text" placeholder="Güvenlik No">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="cart-btn mt-md-5 p-md-4 offset-1">
+        <a href="/ECommercial/Carts/Pay" class="btn btn-lg offset-4">Alışverişi Tamamla</a>
+    </div>
+</div>
+
+

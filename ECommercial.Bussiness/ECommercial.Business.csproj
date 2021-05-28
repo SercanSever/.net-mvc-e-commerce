@@ -67,6 +67,8 @@
     <Compile Include="Abstract\ICartService.cs" />
     <Compile Include="Abstract\ICategoryService.cs" />
     <Compile Include="Abstract\ICommentService.cs" />
+    <Compile Include="Abstract\IOrderDetailService.cs" />
+    <Compile Include="Abstract\IOrderService.cs" />
     <Compile Include="Abstract\IProductImageService.cs" />
     <Compile Include="Abstract\IProductService.cs" />
     <Compile Include="Abstract\IUserAddressService.cs" />
@@ -75,6 +77,8 @@
     <Compile Include="Concrete\CartManager.cs" />
     <Compile Include="Concrete\CategoryManager.cs" />
     <Compile Include="Concrete\CommentManager.cs" />
+    <Compile Include="Concrete\OrderDetailManager.cs" />
+    <Compile Include="Concrete\OrderManager.cs" />
     <Compile Include="Concrete\ProductImageManager.cs" />
     <Compile Include="Concrete\ProductManager.cs" />
     <Compile Include="Concrete\UserAddressManager.cs" />

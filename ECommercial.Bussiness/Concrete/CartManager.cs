@@ -91,7 +91,7 @@ namespace ECommercial.Bussiness.Concrete
             return new SuccessResult();
         }
 
-     
+
         public IDataResult<List<Product>> GetAll()
         {
             string key = "products";
@@ -104,6 +104,10 @@ namespace ECommercial.Bussiness.Concrete
             return new SuccessDataResult<List<Product>>(list.Data);
         }
 
-
+        public IResult Clear()
+        {
+            _cacheManager.Clear();
+            return new SuccessResult();
+        }
     }
 }

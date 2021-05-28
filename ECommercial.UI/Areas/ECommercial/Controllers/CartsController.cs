@@ -12,10 +12,14 @@ namespace ECommercial.UI.Areas.ECommercial.Controllers
     public class CartsController : Controller
     {
         private ICartService _cartService;
+        private IUserAddressService _userAddressService;
+        private IOrderService _orderService;
 
-        public CartsController(ICartService cartService)
+        public CartsController(ICartService cartService, IUserAddressService userAddressService, IOrderService orderService)
         {
             _cartService = cartService;
+            _userAddressService = userAddressService;
+            _orderService = orderService;
         }
 
         public ActionResult Index()
@@ -41,6 +45,36 @@ namespace ECommercial.UI.Areas.ECommercial.Controllers
             var cartListCount = _cartService.GetCart().Data.Count;
             ViewBag.CartListCount = cartListCount;
             return PartialView("_PartialCartCount");
+        }
+        [HttpGet]
+        public ActionResult AddressConfirmation()
+        {
+            var cartList = _cartService.GetCart();
+            var userId = Convert.ToInt32(Session["Id"]);
+            var result = _userAddressService.GetById(userId);
+            return View(Tuple.Create<UserAddress, List<Product>>(result.Data, cartList.Data));
+        }
+        [HttpGet]
+        public ActionResult Payment()
+        {
+            var cartList = _cartService.GetCart();
+            return View(cartList.Data);
+        }
+        [HttpGet]
+        public ActionResult Pay()
+        {
+            var cartList = _cartService.GetCart();
+            var order = new Order();
+            foreach (var product in cartList.Data)
+            {
+                order.ProductId = product.Id;
+                order.OrderDate = DateTime.Now;
+                order.UserId = Convert.ToInt32(Session["Id"]);
+                order.Quantity = product.OrderQuantity;
+                _orderService.Add(order);
+            }
+            _cartService.Clear();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

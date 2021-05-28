@@ -16,6 +16,7 @@ namespace ECommercial.Bussiness.Abstract
         IResult DeleteFromCart(int productId);
         IResult AddCart(Product product);
         IDataResult<List<Product>> GetCart();
-   
+        IResult Clear();
+
     }
 }

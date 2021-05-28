@@ -1,0 +1,116 @@
+﻿@using ECommercial.Entities.Concrete
+@model Tuple<UserAddress, List<Product>>
+@{
+    ViewBag.Title = "AddressConfirmation";
+    Layout = "~/Areas/ECommercial/Views/Shared/_ECommercialLayout.cshtml";
+}
+
+<div class="checkout">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="checkout-inner">
+                    <div class="billing-address">
+                        <h2>Adres</h2>
+                        <div class="row">
+                            @if (Model != null)
+                            {
+                                <div class="col-md-4">
+                                    <h4>@Model.Item1.AddressName</h4>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <h5>@Model.Item1.City  @Model.Item1.Country</h5>
+                                        <p>@Model.Item1.Address</p>
+                                        <p>@Model.Item1.Phone</p>
+                                        <a class="btn" href="/ECommercial/Users/UpdateAddress/@Model.Item1.Id">Adresi Güncelle</a>
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                <a class="btn" href="/ECommercial/Users/AddAddress">Adres Ekle</a>
+                            }
+                        </div>
+                    </div>
+
+                    <div class="shipping-address">
+                        <h2>Shipping Address</h2>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>First Name</label>
+                                <input class="form-control" type="text" placeholder="First Name">
+                            </div>
+                            <div class="col-md-6">
+                                <label>Last Name"</label>
+                                <input class="form-control" type="text" placeholder="Last Name">
+                            </div>
+                            <div class="col-md-6">
+                                <label>E-mail</label>
+                                <input class="form-control" type="text" placeholder="E-mail">
+                            </div>
+                            <div class="col-md-6">
+                                <label>Mobile No</label>
+                                <input class="form-control" type="text" placeholder="Mobile No">
+                            </div>
+                            <div class="col-md-12">
+                                <label>Address</label>
+                                <input class="form-control" type="text" placeholder="Address">
+                            </div>
+                            <div class="col-md-6">
+                                <label>Country</label>
+                                <select class="custom-select">
+                                    <option selected="">United States</option>
+                                    <option>Afghanistan</option>
+                                    <option>Albania</option>
+                                    <option>Algeria</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label>City</label>
+                                <input class="form-control" type="text" placeholder="City">
+                            </div>
+                            <div class="col-md-6">
+                                <label>State</label>
+                                <input class="form-control" type="text" placeholder="State">
+                            </div>
+                            <div class="col-md-6">
+                                <label>ZIP Code</label>
+                                <input class="form-control" type="text" placeholder="ZIP Code">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="checkout-inner">
+                    <div class="checkout-summary">
+                        <h1>Sepet Özeti</h1>
+                        <p>
+                            Toplam Tutar<span>
+                                @{
+                                    var totalPrice = Model.Item2.Sum(x => x.UnitPrice * x.OrderQuantity);
+                                    @totalPrice
+                                } ₺
+                            </span>
+                        </p>
+                        <p>Kargo Ücreti<span>10 ₺</span></p>
+                        <h2>
+                            Ödenecek Tutar<span>
+                                @{
+                                    var grandTotal = Model.Item2.Sum(x => x.UnitPrice * x.OrderQuantity) + 10;
+                                    @grandTotal
+                                }
+                                ₺
+                            </span>
+                        </h2>
+                        <div class="cart-btn mt-md-4">
+                            <a href="/ECommercial/Carts/Payment" class="btn btn-lg offset-4">Ödeme Yap</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
