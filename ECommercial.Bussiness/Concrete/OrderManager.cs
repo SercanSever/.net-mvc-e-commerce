@@ -40,10 +40,12 @@ namespace ECommercial.Bussiness.Concrete
             var user = _userService.GetById(order.UserId);
             var orderDetails = new OrderDetail
             {
+                ProductId = product.Data.Id,
                 OrderId = order.OrderId,
                 OrderQuantity = order.Quantity,
                 ProductName = product.Data.Name,
                 TotalPaymant = (product.Data.UnitPrice * order.Quantity),
+                UserId = user.Data.Id,
                 UserEmail = user.Data.Email,
                 UserLastName = user.Data.LastName,
                 UserName = user.Data.FirstName,

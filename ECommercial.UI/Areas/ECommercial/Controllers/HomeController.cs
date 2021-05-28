@@ -22,9 +22,9 @@ namespace ECommercial.UI.Areas.ECommercial.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            var categories = _categoryService.GetAll();
-            var products = _productService.GetProductWithImages();
-            return View(Tuple.Create<List<Category>, List<ProductWithImageDto>>(categories.Data, products.Data));
+            var categories = _categoryService.GetAll().Data.Where(x=>x.Status == true).ToList();
+            var products = _productService.GetProductWithImages().Data.Where(x=>x.Status == true).ToList();
+            return View(Tuple.Create<List<Category>, List<ProductWithImageDto>>(categories, products));
         }
     }
 }

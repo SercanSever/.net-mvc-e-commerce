@@ -11,5 +11,6 @@ namespace ECommercial.Bussiness.Abstract
     public interface IOrderDetailService
     {
         IResult Add(OrderDetail orderDetail);
+        IDataResult<List<OrderDetail>> GetAllOrdersWithUserId(int userId);
     }
 }

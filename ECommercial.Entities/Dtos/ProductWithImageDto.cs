@@ -20,6 +20,7 @@ namespace ECommercial.Entities.Dtos
         public int Quantity { get; set; }
         public bool Status { get; set; }
         public decimal PercentOfDiscount { get; set; }
+        public decimal? DiscountedPrice { get; set; }
 
     }
 }

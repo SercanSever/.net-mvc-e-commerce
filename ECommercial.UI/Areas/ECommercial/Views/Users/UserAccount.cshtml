@@ -1,5 +1,5 @@
 ﻿@using ECommercial.Entities.Concrete
-@model Tuple<UserAddress, User>
+@model Tuple<UserAddress, User, List<OrderDetail>>
 @{
     ViewBag.Title = "UserAccount";
     Layout = "~/Areas/ECommercial/Views/Shared/_ECommercialLayout.cshtml";
@@ -12,8 +12,8 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
-                    <a class="nav-link active" id="orders-nav" data-toggle="pill" href="#orders-tab" role="tab" aria-selected="true"><i class="fa fa-shopping-bag"></i>Orders</a>
-                    <a class="nav-link" id="address-nav" data-toggle="pill" href="#address-tab" role="tab" aria-selected="false"><i class="fa fa-map-marker-alt"></i>Adresler</a>
+                    <a class="nav-link active" id="orders-nav" data-toggle="pill" href="#orders-tab" role="tab" aria-selected="true"><i class="fa fa-shopping-bag"></i>Geçmiş Siparişlerim</a>
+                    <a class="nav-link" id="address-nav" data-toggle="pill" href="#address-tab" role="tab" aria-selected="false"><i class="fa fa-map-marker-alt"></i>Adresim</a>
                     <a class="nav-link" id="account-nav" data-toggle="pill" href="#account-tab" role="tab" aria-selected="false"><i class="fa fa-user"></i>Hesap Bilgiler</a>
                     <a class="nav-link" href="/ECommercial/Auth/LogOut"><i class="fa fa-sign-out-alt"></i>Logout</a>
                 </div>
@@ -21,44 +21,34 @@
             <div class="col-md-9">
                 <div class="tab-content">
 
+
+
                     <div class="tab-pane fade active show" id="orders-tab" role="tabpanel" aria-labelledby="orders-nav">
                         <div class="table-responsive">
                             <table class="table table-bordered">
                                 <thead class="thead-dark">
                                     <tr>
-                                        <th>No</th>
-                                        <th>Product</th>
-                                        <th>Date</th>
-                                        <th>Price</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
+                                        <th>Ürün</th>
+                                        <th>Fiyat</th>
+                                        <th>Adet</th>
+                                        <th>Tarih</th>
+                                        <th>Kullanıcı</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Product Name</td>
-                                        <td>01 Jan 2020</td>
-                                        <td>$99</td>
-                                        <td>Approved</td>
-                                        <td><button class="btn">View</button></td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Product Name</td>
-                                        <td>01 Jan 2020</td>
-                                        <td>$99</td>
-                                        <td>Approved</td>
-                                        <td><button class="btn">View</button></td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Product Name</td>
-                                        <td>01 Jan 2020</td>
-                                        <td>$99</td>
-                                        <td>Approved</td>
-                                        <td><button class="btn">View</button></td>
-                                    </tr>
+                                    @if (Model.Item3 != null)
+                                    {
+                                        foreach (var orderDetail in Model.Item3)
+                                        {
+                                            <tr>
+                                                <td>@orderDetail.ProductName</td>
+                                                <td>@orderDetail.TotalPaymant</td>
+                                                <td>@orderDetail.OrderQuantity</td>
+                                                <td>@orderDetail.OrderDate</td>
+                                                <td><a class="btn" href="/ECommercial/Products/ProductDetails/@orderDetail.ProductId">Ürünü Gör</a></td>
+                                            </tr>
+                                        }
+                                    }
                                 </tbody>
                             </table>
                         </div>

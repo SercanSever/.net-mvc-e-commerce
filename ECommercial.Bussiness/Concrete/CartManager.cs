@@ -53,6 +53,10 @@ namespace ECommercial.Bussiness.Concrete
                 return new ErrorResult();
             }
             productModel.Data.OrderQuantity = product.OrderQuantity;
+            if (product.DiscountedPrice != 0)
+            {
+                productModel.Data.UnitPrice = product.DiscountedPrice;
+            }
             var cartList = new List<Product>();
             if (_cacheManager.IsAdd(ip))
             {

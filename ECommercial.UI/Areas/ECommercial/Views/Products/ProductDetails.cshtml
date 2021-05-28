@@ -15,6 +15,7 @@
                     @using (Html.BeginForm("AddCart", "Carts", FormMethod.Post))
                     {
                         @Html.HiddenFor(x => x.Item1.Id)
+                        @Html.HiddenFor(x=>x.Item1.DiscountedPrice)
                         <div class="row align-items-center">
                             <div class="col-md-5">
                                 <div class="product-slider-single normal-slider">

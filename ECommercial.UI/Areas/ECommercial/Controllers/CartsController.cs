@@ -30,7 +30,15 @@ namespace ECommercial.UI.Areas.ECommercial.Controllers
         [HttpPost]
         public ActionResult AddCart([Bind(Prefix = "Item1")] Product product)
         {
-            _cartService.AddCart(product);
+            if (product.DiscountedPrice != 0)
+            {
+                product.UnitPrice = product.DiscountedPrice;
+                _cartService.AddCart(product);
+            }
+            else
+            {
+                _cartService.AddCart(product);
+            }
             return RedirectToAction("ProductDetails", "Products", new { @id = product.Id });
         }
         [HttpGet]
@@ -46,6 +54,7 @@ namespace ECommercial.UI.Areas.ECommercial.Controllers
             ViewBag.CartListCount = cartListCount;
             return PartialView("_PartialCartCount");
         }
+        [Authorize]
         [HttpGet]
         public ActionResult AddressConfirmation()
         {

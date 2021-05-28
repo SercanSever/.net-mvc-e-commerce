@@ -26,58 +26,54 @@ namespace ECommercial.UI.Areas.ECommercial.Controllers
         {
             if (!string.IsNullOrWhiteSpace(searchFilter))
             {
-                var categoryResult = _categoryService.GetAll();
-                var result = _productService.GetProductWithImages().Data.Where(x => x.Name.Contains(searchFilter));
-                return View(Tuple.Create<List<ProductWithImageDto>, List<Category>>(result.ToList(), categoryResult.Data));
+                var categoryResult = _categoryService.GetAll().Data.Where(x => x.Status == true).ToList();
+                var result = _productService.GetProductWithImages().Data.Where(x => x.Name.Contains(searchFilter)).Where(x => x.Status == true).ToList();
+                return View(Tuple.Create<List<ProductWithImageDto>, List<Category>>(result.ToList(), categoryResult));
             }
             else
             {
-                var categoryResult = _categoryService.GetAll();
-                var result = _productService.GetProductWithImages();
-                return View(Tuple.Create<List<ProductWithImageDto>, List<Category>>(result.Data, categoryResult.Data));
+                var categoryResult = _categoryService.GetAll().Data.Where(x => x.Status == true).ToList();
+                var result = _productService.GetProductWithImages().Data.Where(x => x.Status == true).ToList();
+                return View(Tuple.Create<List<ProductWithImageDto>, List<Category>>(result, categoryResult));
             }
         }
         [HttpGet]
         public ActionResult SortByNewest()
         {
-            var categoryResult = _categoryService.GetAll();
-            var result = _productService.GetProductWithImages().Data.OrderByDescending(x => x.ProductId);
-            return View("Index", Tuple.Create<List<ProductWithImageDto>, List<Category>>(result.ToList(), categoryResult.Data));
+            var categoryResult = _categoryService.GetAll().Data.Where(x => x.Status == true).ToList();
+            var result = _productService.GetProductWithImages().Data.OrderByDescending(x => x.ProductId).Where(x => x.Status == true).ToList();
+            return View("Index", Tuple.Create<List<ProductWithImageDto>, List<Category>>(result, categoryResult));
         }
         [HttpGet]
         public ActionResult SortByRising()
         {
-            var categoryResult = _categoryService.GetAll();
-            var result = _productService.GetProductWithImages().Data.OrderBy(x => x.UnitPrice);
-            return View("Index", Tuple.Create<List<ProductWithImageDto>, List<Category>>(result.ToList(), categoryResult.Data));
+            var categoryResult = _categoryService.GetAll().Data.Where(x => x.Status == true).ToList();
+            var result = _productService.GetProductWithImages().Data.OrderBy(x => x.UnitPrice).Where(x => x.Status == true).ToList();
+            return View("Index", Tuple.Create<List<ProductWithImageDto>, List<Category>>(result, categoryResult));
 
         }
         [HttpGet]
         public ActionResult SortByDecreasing()
         {
-            var categoryResult = _categoryService.GetAll();
-            var result = _productService.GetProductWithImages().Data.OrderByDescending(x => x.UnitPrice);
-            return View("Index", Tuple.Create<List<ProductWithImageDto>, List<Category>>(result.ToList(), categoryResult.Data));
+            var categoryResult = _categoryService.GetAll().Data.Where(x => x.Status == true).ToList();
+            var result = _productService.GetProductWithImages().Data.OrderByDescending(x => x.UnitPrice).Where(x => x.Status == true).ToList();
+            return View("Index", Tuple.Create<List<ProductWithImageDto>, List<Category>>(result, categoryResult));
         }
         [HttpGet]
         public ActionResult GetProductsWithCategoryId(int id)
         {
-            var categoryResult = _categoryService.GetAll();
-            var result = _productService.GetProductsWithCategoryId(id);
-            if (result.Success)
-            {
-                return View("Index", Tuple.Create<List<ProductWithImageDto>, List<Category>>(result.Data, categoryResult.Data));
-            }
-            throw new Exception();
+            var categoryResult = _categoryService.GetAll().Data.Where(x => x.Status == true).ToList();
+            var result = _productService.GetProductsWithCategoryId(id).Data.Where(x => x.Status == true).ToList();
+            return View("Index", Tuple.Create<List<ProductWithImageDto>, List<Category>>(result, categoryResult));
         }
         [HttpGet]
         public ActionResult ProductDetails(int id)
         {
-            var categoryResult = _categoryService.GetAll();
+            var categoryResult = _categoryService.GetAll().Data.Where(x => x.Status == true).ToList();
             var productResult = _productService.GetById(id);
-            var productsByCategoryId = _productService.GetProductsWithCategoryId(productResult.Data.CategoryId);
-            Tuple<Product, List<Category>, List<ProductWithImageDto>, Comment> tuple = new Tuple<Product, List<Category>, List<ProductWithImageDto>, Comment>(productResult.Data, categoryResult.Data, productsByCategoryId.Data, new Comment());
-            var count = _commentService.GetAllWithProductId(id).Data.Where(x=>x.Status==true).ToList().Count;
+            var productsByCategoryId = _productService.GetProductsWithCategoryId(productResult.Data.CategoryId).Data.Where(x => x.Status == true).ToList();
+            Tuple<Product, List<Category>, List<ProductWithImageDto>, Comment> tuple = new Tuple<Product, List<Category>, List<ProductWithImageDto>, Comment>(productResult.Data, categoryResult, productsByCategoryId, new Comment());
+            var count = _commentService.GetAllWithProductId(id).Data.Where(x => x.Status == true).ToList().Count;
             ViewBag.CommentCount = count;
             return View(tuple);
         }
@@ -95,6 +91,12 @@ namespace ECommercial.UI.Areas.ECommercial.Controllers
         {
             var result = _commentService.GetAllWithProductId(Id).Data;
             return PartialView("_PartialCommentList", result);
+        }
+        [HttpGet]
+        public ActionResult DiscountedProducts()
+        {
+            var result = _productService.GetProductWithImages().Data.Where(x => x.DiscountedPrice != 0).ToList();
+            return PartialView("_PartialDiscounts", result);
         }
 
     }

@@ -17,13 +17,15 @@ namespace ECommercial.UI.Areas.ECommercial.Controllers
         private IUserFavoriteService _userFavoriteService;
         private IProductService _productService;
         private IUserAddressService _userAddressService;
+        private IOrderDetailService _orderDetailService;
 
-        public UsersController(IUserService userService, IUserFavoriteService userFavoriteService, IProductService productService, IUserAddressService userAddressService)
+        public UsersController(IUserService userService, IUserFavoriteService userFavoriteService, IProductService productService, IUserAddressService userAddressService, IOrderDetailService orderDetailService)
         {
             _userService = userService;
             _userFavoriteService = userFavoriteService;
             _productService = productService;
             _userAddressService = userAddressService;
+            _orderDetailService = orderDetailService;
 
         }
         [Authorize]
@@ -75,7 +77,8 @@ namespace ECommercial.UI.Areas.ECommercial.Controllers
             var userId = Convert.ToInt32(Session["Id"]);
             var result = _userAddressService.GetByUserId(userId);
             var userInfoResult = _userService.GetById(userId);
-            return View(Tuple.Create<UserAddress, User>(result.Data, userInfoResult.Data));
+            var orders = _orderDetailService.GetAllOrdersWithUserId(userId);
+            return View(Tuple.Create<UserAddress, User, List<OrderDetail>>(result.Data, userInfoResult.Data, orders.Data));
         }
         [Authorize]
         [HttpGet]
