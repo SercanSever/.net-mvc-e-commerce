@@ -37,15 +37,10 @@
                                     <td>@user.Phone</td>
                                     <td>@user.Email</td>
                                     <td>
-                                        @if (user.UserAddresses != null)
-                                        {
-                                            <a class="btn btn-outline-warning btn-sm" href="/AdministratorArea/Customers/UserDetails/@user.Id">Detaylar</a>
-                                        }
-                                        else
-                                        {
-                                            <a class="btn btn-outline-warning btn-sm disabled" href="/AdministratorArea/Customers/UserDetails/@user.Id">Detaylar</a>
-                                        }
-                                        <a class="btn btn-outline-info btn-sm" href="/AdministratorArea/Users/ShoppingHistory/@user.Id">Alışveriş Geçmişi</a>
+
+                                        <a class="btn btn-outline-warning btn-sm" href="/AdministratorArea/Customers/UserDetails/@user.Id">Kullanıcı Bilgileri</a>
+
+                                        <a class="btn btn-outline-info btn-sm" href="/AdministratorArea/Customers/ShoppingHistory/@user.Id">Alışveriş Geçmişi</a>
                                     </td>
                                 </tr>
                             }

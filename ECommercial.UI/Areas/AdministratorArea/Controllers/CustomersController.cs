@@ -1,4 +1,5 @@
 ﻿using ECommercial.Bussiness.Abstract;
+using ECommercial.Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +28,8 @@ namespace ECommercial.UI.Areas.AdministratorArea.Controllers
         public ActionResult UserDetails(int Id)
         {
             var result = _userAddressService.GetByUserId(Id);
-            return View(result.Data);
+            var userResult = _userService.GetById(Id);
+            return View(Tuple.Create<UserAddress,User>(result.Data,userResult.Data));
         }
     }
 }

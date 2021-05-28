@@ -35,7 +35,6 @@ namespace ECommercial.Entities.Concrete
         [NotMapped]
         public virtual bool RememberMe { get; set; }
         public bool Status { get; set; }
-        public List<UserAddress> UserAddresses { get; set; }
         public List<UserFavorite> UserFavorites { get; set; }
     }
 }
