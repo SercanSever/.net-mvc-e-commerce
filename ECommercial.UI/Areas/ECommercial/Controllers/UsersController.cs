@@ -18,14 +18,16 @@ namespace ECommercial.UI.Areas.ECommercial.Controllers
         private IProductService _productService;
         private IUserAddressService _userAddressService;
         private IOrderDetailService _orderDetailService;
+        private IContactService _contactService;
 
-        public UsersController(IUserService userService, IUserFavoriteService userFavoriteService, IProductService productService, IUserAddressService userAddressService, IOrderDetailService orderDetailService)
+        public UsersController(IUserService userService, IUserFavoriteService userFavoriteService, IProductService productService, IUserAddressService userAddressService, IOrderDetailService orderDetailService, IContactService contactService)
         {
             _userService = userService;
             _userFavoriteService = userFavoriteService;
             _productService = productService;
             _userAddressService = userAddressService;
             _orderDetailService = orderDetailService;
+            _contactService = contactService;
 
         }
         [Authorize]
@@ -127,6 +129,30 @@ namespace ECommercial.UI.Areas.ECommercial.Controllers
                 return RedirectToAction("UserAccount");
             }
             throw new Exception();
+        }
+        [HttpGet]
+        public ActionResult Contact()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Contact(Contact contact)
+        {
+            var userId = Convert.ToInt32(Session["Id"]);
+            var user = _userService.GetById(userId);
+            if (Session["Id"] != null)
+            {
+                contact.UserId = userId;
+                contact.UserName = user.Data.FirstName;
+                contact.UserEmail = user.Data.Email;
+                _contactService.Add(contact);
+            }
+            else
+            {
+                _contactService.Add(contact);
+            }
+
+            return RedirectToAction("Contact");
         }
 
     }

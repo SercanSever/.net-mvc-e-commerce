@@ -2591,6 +2591,7 @@
     <Content Include="Areas\ECommercial\Views\Shared\_PartialDiscounts.cshtml" />
     <Content Include="Areas\AdministratorArea\Views\Customers\ShoppingHistory.cshtml" />
     <Content Include="Areas\AdministratorArea\Views\Sales\Index.cshtml" />
+    <Content Include="Areas\ECommercial\Views\Users\Contact.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

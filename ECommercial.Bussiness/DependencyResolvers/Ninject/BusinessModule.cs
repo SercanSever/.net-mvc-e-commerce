@@ -50,6 +50,9 @@ namespace ECommercial.Bussiness.DependencyResolvers.Ninject
 
             Bind<IOrderDetailService>().To<OrderDetailManager>();
             Bind<IOrderDetailDal>().To<EfOrderDetailDal>();
+
+            Bind<IContactService>().To<ContactManager>();
+            Bind<IContactDal>().To<EfContactDal>();
         }
     }
 }

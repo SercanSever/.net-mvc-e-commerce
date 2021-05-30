@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Concrete\Category.cs" />
     <Compile Include="Concrete\Comment.cs" />
+    <Compile Include="Concrete\Contact.cs" />
     <Compile Include="Concrete\Order.cs" />
     <Compile Include="Concrete\OrderDetail.cs" />
     <Compile Include="Concrete\Product.cs" />
