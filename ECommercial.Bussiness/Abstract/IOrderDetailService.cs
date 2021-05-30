@@ -12,5 +12,6 @@ namespace ECommercial.Bussiness.Abstract
     {
         IResult Add(OrderDetail orderDetail);
         IDataResult<List<OrderDetail>> GetAllOrdersWithUserId(int userId);
+        IDataResult<List<OrderDetail>> GetAll();
     }
 }

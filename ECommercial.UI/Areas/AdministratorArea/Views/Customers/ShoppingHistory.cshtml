@@ -1,0 +1,48 @@
+﻿@using ECommercial.Entities.Concrete
+@model List<OrderDetail>
+@{
+    ViewBag.Title = "ShoppingHistory";
+    Layout = "~/Areas/AdministratorArea/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title"><strong>Kullanıcı Geçmişi</strong></h3>
+            </div>
+            <!-- ./card-header -->
+            <div class="card-body">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Kullanıcı</th>
+                            <th>Email</th>
+                            <th>Ürün</th>
+                            <th>Adet</th>
+                            <th>Ödenen</th>
+                            <th>Tarih</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var orderDetail in Model)
+                        {
+                            <tr>
+                                <td>@orderDetail.UserName @orderDetail.UserLastName</td>
+                                <td>@orderDetail.UserEmail </td>
+                                <td>@orderDetail.ProductName</td>
+                                <td>@orderDetail.OrderQuantity</td>
+                                <td>@orderDetail.TotalPaymant</td>
+                                <td>@orderDetail.OrderDate</td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
+</div>
+

@@ -1,0 +1,64 @@
+﻿@using ECommercial.Entities.Concrete
+@model List<OrderDetail>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/AdministratorArea/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title"><strong>Satışlar</strong></h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div id="example1_filter" class="dataTables_filter"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <table id="table" class="display" style="width:100%">
+                        <thead>
+                            <tr role="row">
+                                <th>Ürün Adı</th>
+                                <th>Ödenen Fiyat</th>
+                                <th>Adet</th>
+                                <th>Kullanıcı</th>
+                                <th>Kullanıcı Email</th>
+                                <th>Tarih</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var order in Model)
+                            {
+                                <tr>
+                                    <td>@order.ProductName</td>
+                                    <td>@order.TotalPaymant</td>
+                                    <td>@order.OrderQuantity</td>
+                                    <td>@order.UserName @order.UserLastName</td>
+                                    <td>@order.UserEmail</td>
+                                    <td>@order.OrderDate</td>
+                                </tr>
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th rowspan="1" colspan="1">Ürün Adı</th>
+                                <th rowspan="1" colspan="1">Ödenen Fiyat</th>
+                                <th rowspan="1" colspan="1">Adet</th>
+                                <th rowspan="1" colspan="1">Kullanıcı</th>
+                                <th rowspan="1" colspan="1">Kullanıcı Emailt</th>
+                                <th rowspan="1" colspan="1">Tarih</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.card-body -->
+</div>
+
+

@@ -12,11 +12,13 @@ namespace ECommercial.UI.Areas.AdministratorArea.Controllers
     {
         private IUserService _userService;
         private IUserAddressService _userAddressService;
+        private IOrderDetailService _orderDetailService;
 
-        public CustomersController(IUserService userService, IUserAddressService userAddressService)
+        public CustomersController(IUserService userService, IUserAddressService userAddressService, IOrderDetailService orderDetailService)
         {
             _userService = userService;
             _userAddressService = userAddressService;
+            _orderDetailService = orderDetailService;
         }
         [HttpGet]
         public ActionResult Index()
@@ -29,7 +31,13 @@ namespace ECommercial.UI.Areas.AdministratorArea.Controllers
         {
             var result = _userAddressService.GetByUserId(Id);
             var userResult = _userService.GetById(Id);
-            return View(Tuple.Create<UserAddress,User>(result.Data,userResult.Data));
+            return View(Tuple.Create<UserAddress, User>(result.Data, userResult.Data));
+        }
+        [HttpGet]
+        public ActionResult ShoppingHistory(int Id)
+        {
+            var result = _orderDetailService.GetAllOrdersWithUserId(Id);
+            return View(result.Data);
         }
     }
 }

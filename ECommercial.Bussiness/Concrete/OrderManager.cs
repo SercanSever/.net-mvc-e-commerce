@@ -44,7 +44,7 @@ namespace ECommercial.Bussiness.Concrete
                 OrderId = order.OrderId,
                 OrderQuantity = order.Quantity,
                 ProductName = product.Data.Name,
-                TotalPaymant = (product.Data.UnitPrice * order.Quantity),
+                TotalPaymant = product.Data.UnitPrice - (product.Data.UnitPrice * order.Quantity) * (product.Data.PercentOfDiscount / 100),
                 UserId = user.Data.Id,
                 UserEmail = user.Data.Email,
                 UserLastName = user.Data.LastName,

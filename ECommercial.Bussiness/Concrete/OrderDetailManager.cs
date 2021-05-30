@@ -25,6 +25,11 @@ namespace ECommercial.Bussiness.Concrete
             return new SuccessResult();
         }
 
+        public IDataResult<List<OrderDetail>> GetAll()
+        {
+            return new SuccessDataResult<List<OrderDetail>>(_orderDetailDal.GetAll());
+        }
+
         public IDataResult<List<OrderDetail>> GetAllOrdersWithUserId(int userId)
         {
             return new SuccessDataResult<List<OrderDetail>>(_orderDetailDal.GetAll(x => x.UserId == userId));
