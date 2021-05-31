@@ -25,6 +25,12 @@ namespace ECommercial.Bussiness.Concrete
             return new SuccessResult();
         }
 
+        public IResult Delete(Contact contact)
+        {
+            _contactDal.Delete(contact);
+            return new SuccessResult();
+        }
+
         public IDataResult<List<Contact>> GetAll()
         {
             return new SuccessDataResult<List<Contact>>(_contactDal.GetAll());

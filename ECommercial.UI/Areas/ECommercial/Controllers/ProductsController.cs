@@ -45,6 +45,13 @@ namespace ECommercial.UI.Areas.ECommercial.Controllers
             return View("Index", Tuple.Create<List<ProductWithImageDto>, List<Category>>(result, categoryResult));
         }
         [HttpGet]
+        public ActionResult SortByOldest()
+        {
+            var categoryResult = _categoryService.GetAll().Data.Where(x => x.Status == true).ToList();
+            var result = _productService.GetProductWithImages().Data.OrderBy(x=>x.ProductId).Where(x => x.Status == true).ToList();
+            return View("Index", Tuple.Create<List<ProductWithImageDto>, List<Category>>(result, categoryResult));
+        }
+        [HttpGet]
         public ActionResult SortByRising()
         {
             var categoryResult = _categoryService.GetAll().Data.Where(x => x.Status == true).ToList();
@@ -59,6 +66,7 @@ namespace ECommercial.UI.Areas.ECommercial.Controllers
             var result = _productService.GetProductWithImages().Data.OrderByDescending(x => x.UnitPrice).Where(x => x.Status == true).ToList();
             return View("Index", Tuple.Create<List<ProductWithImageDto>, List<Category>>(result, categoryResult));
         }
+      
         [HttpGet]
         public ActionResult GetProductsWithCategoryId(int id)
         {

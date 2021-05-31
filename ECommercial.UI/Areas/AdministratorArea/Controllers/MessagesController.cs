@@ -27,6 +27,13 @@ namespace ECommercial.UI.Areas.AdministratorArea.Controllers
             return View(result.Data);
         }
         [HttpGet]
+        public ActionResult DeleteMessage(int Id)
+        {
+            var contact = _contactService.GetById(Id);
+            _contactService.Delete(contact.Data);
+            return RedirectToAction("IncomingMessages");
+        }
+        [HttpGet]
         public ActionResult ReadMessage(int Id)
         {
             var result = _contactService.GetById(Id);

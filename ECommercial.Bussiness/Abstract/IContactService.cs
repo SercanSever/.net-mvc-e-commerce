@@ -14,5 +14,6 @@ namespace ECommercial.Bussiness.Abstract
         IDataResult<List<Contact>> GetAll();
         IDataResult<Contact> GetById(int Id);
         IDataResult<List<Contact>> GetByUserId(int ıd);
+        IResult Delete(Contact contact);
     }
 }

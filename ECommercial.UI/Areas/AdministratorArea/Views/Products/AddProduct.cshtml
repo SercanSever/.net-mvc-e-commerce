@@ -11,9 +11,9 @@
         <h3 class="card-title">Ürün Ekle</h3>
     </div>
     <div class="card-body shadow">
-        <form method="post">
-
-
+        @using (Html.BeginForm("AddProduct", "Products", FormMethod.Post))
+        {
+            @Html.ValidationSummary(false, "", new { @style = "color:red" })
             <div class="form-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fas fa-bookmark"></i></span>
@@ -52,7 +52,9 @@
             </div>
             <button type="submit" class="btn btn-block btn-outline-info">Kaydet</button>
 
-        </form>
+        }
+
+
     </div>
     <!-- /.card-body -->
 </div>

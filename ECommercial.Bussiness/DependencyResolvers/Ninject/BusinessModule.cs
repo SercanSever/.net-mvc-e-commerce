@@ -1,7 +1,10 @@
-﻿using ECommercial.Bussiness.Abstract;
+﻿using Autofac;
+using Castle.DynamicProxy;
+using ECommercial.Bussiness.Abstract;
 using ECommercial.Bussiness.Concrete;
 using ECommercial.Core.CrossCuttingConcerns.Caching;
 using ECommercial.Core.CrossCuttingConcerns.Caching.Microsoft;
+using ECommercial.Core.Utilities.Interceptors;
 using ECommercial.DataAccess.Abstract;
 using ECommercial.DataAccess.Concrete.EntityFramework;
 using ECommercial.DataAccess.Context;
@@ -56,6 +59,7 @@ namespace ECommercial.Bussiness.DependencyResolvers.Ninject
 
             Bind<IEmailService>().To<EmailManager>();
             Bind<IEmailDal>().To<EfEmailDal>();
+
         }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using ECommercial.Bussiness.Abstract;
 using ECommercial.Bussiness.Constants;
+using ECommercial.Bussiness.ValidationRules;
+using ECommercial.Core.Aspects.Autofac.Validation;
 using ECommercial.Core.CrossCuttingConcerns.Caching;
 using ECommercial.Core.CrossCuttingConcerns.Caching.Microsoft;
 using ECommercial.Core.Utilities.Business;

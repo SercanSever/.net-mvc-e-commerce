@@ -14,7 +14,9 @@
                     <div class="card-header">
                         <h3 class="card-title">Gelen Mesaj</h3>
                     </div>
+                    @Html.HiddenFor(x => x.ContactId)
                     @Html.HiddenFor(x => x.UserName)
+
                     <!-- /.card-header -->
                     <div class="card-body p-0">
                         <div class="mailbox-read-info p-sm-4">
@@ -34,8 +36,10 @@
                         <div class="float-right">
                             <a href="/AdministratorArea/Messages/Reply/@Model.ContactId" class="btn btn-default"><i class="fas fa-reply"></i>Cevapla</a>
                         </div>
-                        <button type="button" class="btn btn-default"><i class="far fa-trash-alt"></i> Sil</button>
+                        <a href="/AdministratorArea/Messages/DeleteMessage/@Model.ContactId" class="btn btn-default"><i class="far fa-trash-alt"></i>Sil</a>
                     </div>
+
+
                     <!-- /.card-footer -->
                 </div>
                 <!-- /.card -->

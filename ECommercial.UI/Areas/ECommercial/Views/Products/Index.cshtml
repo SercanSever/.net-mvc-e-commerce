@@ -30,8 +30,7 @@
                                             <div class="dropdown-toggle" data-toggle="dropdown">Ürünleri Sırala</div>
                                             <div class="dropdown-menu dropdown-menu-right">
                                                 <a href="/ECommercial/Products/SortByNewest" class="dropdown-item">En Yeni</a>
-                                                <a href="/ECommercial/Products/SortByPopularity" class="dropdown-item">En Popüler</a>
-                                                <a href="/ECommercial/Products/SortByMostSale" class="dropdown-item">En Çok Satılan</a>
+                                                <a href="/ECommercial/Products/SortByOldest" class="dropdown-item">En Eski</a>
                                             </div>
                                         </div>
                                     </div>
@@ -87,7 +86,7 @@
                 </div>
 
                 <!-- Pagination Start -->
-                <div class="col-md-12">
+                <!--<div class="col-md-12">
                     <nav aria-label="Page navigation example">
                         <ul class="pagination justify-content-center">
                             <li class="page-item disabled">
@@ -101,7 +100,7 @@
                             </li>
                         </ul>
                     </nav>
-                </div>
+                </div>-->
                 <!-- Pagination Start -->
             </div>
 
@@ -114,7 +113,7 @@
                             <li><a href="/ECommercial/Products/Index">Tüm Kategoriler</a></li>
                             @foreach (var category in Model.Item2)
                             {
-                                <li><a href="/ECommercial/Products/GetProductsWithCategoryId/@category.CategoryId">@category.CategoryName </a><span>(45)</span></li>
+                                <li><a href="/ECommercial/Products/GetProductsWithCategoryId/@category.CategoryId">@category.CategoryName </a></li>
                             }
                         </ul>
                     </div>

@@ -13,6 +13,7 @@ namespace ECommercial.Bussiness.ValidationRules
         public ProductValidator()
         {
             RuleFor(x => x.Name).NotEmpty().WithMessage("Ürün adı boş bırakılamaz.");
+            RuleFor(x => x.StockStatus).NotEmpty().WithMessage("Stok boş bırakılamaz.");
             RuleFor(x => x.Name).MaximumLength(50).MinimumLength(1).WithMessage("Ürün adı 1 ile 50 karakter arasında olmalıdır.");
         }
     }
