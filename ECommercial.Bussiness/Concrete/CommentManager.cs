@@ -41,6 +41,11 @@ namespace ECommercial.Bussiness.Concrete
             return new SuccessDataResult<Comment>(_commentDal.Get(x => x.CommentId == commentId));
         }
 
+        public IDataResult<List<Comment>> GetByUserId(int userId)
+        {
+            return new SuccessDataResult<List<Comment>>(_commentDal.GetAll(x => x.UserId == userId));
+        }
+
         public IResult Update(Comment comment)
         {
             _commentDal.Update(comment);

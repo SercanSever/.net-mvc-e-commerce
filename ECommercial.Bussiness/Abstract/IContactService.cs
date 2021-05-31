@@ -13,5 +13,6 @@ namespace ECommercial.Bussiness.Abstract
         IResult Add(Contact contact);
         IDataResult<List<Contact>> GetAll();
         IDataResult<Contact> GetById(int Id);
+        IDataResult<List<Contact>> GetByUserId(int ıd);
     }
 }

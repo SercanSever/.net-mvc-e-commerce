@@ -15,5 +15,6 @@ namespace ECommercial.Bussiness.Abstract
         IResult Add(Comment comment);
         IDataResult<List<Comment>> GetAll();
         IResult Update(Comment comment);
+        IDataResult<List<Comment>> GetByUserId(int userId);
     }
 }

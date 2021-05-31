@@ -34,5 +34,10 @@ namespace ECommercial.Bussiness.Concrete
         {
             return new SuccessDataResult<Contact>(_contactDal.Get(x => x.ContactId == Id));
         }
+
+        public IDataResult<List<Contact>> GetByUserId(int ıd)
+        {
+            return new SuccessDataResult<List<Contact>>(_contactDal.GetAll(x => x.UserId == ıd));
+        }
     }
 }

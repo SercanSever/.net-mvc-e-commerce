@@ -2597,6 +2597,10 @@
     <Content Include="Areas\AdministratorArea\Views\Messages\ReadMessage.cshtml" />
     <Content Include="Areas\AdministratorArea\Views\Messages\Reply.cshtml" />
     <Content Include="Areas\AdministratorArea\Views\Messages\SentMessages.cshtml" />
+    <Content Include="Areas\AdministratorArea\Views\Shared\_PartialOnlineUsers.cshtml" />
+    <Content Include="Areas\AdministratorArea\Views\Shared\_PartialCommentCount.cshtml" />
+    <Content Include="Areas\AdministratorArea\Views\Shared\_PartialOrderCount.cshtml" />
+    <Content Include="Areas\AdministratorArea\Views\Shared\_PartialUserCount.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

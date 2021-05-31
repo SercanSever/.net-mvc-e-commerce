@@ -21,6 +21,21 @@ namespace ECommercial.UI
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             ControllerBuilder.Current.SetControllerFactory(new NinjectControllerFactory(new BusinessModule(), new AutoMapperModule()));
+            Application["OnlineUsers"] = 0;
+        }
+
+        void Session_Start(object sender, EventArgs e)
+        {
+            Application.Lock();
+            Application["OnlineUsers"] = (int)Application["OnlineUsers"] + 1;
+            Application.UnLock();
+        }
+
+        void Session_End(object sender, EventArgs e)
+        {
+            Application.Lock();
+            Application["OnlineUsers"] = (int)Application["OnlineUsers"] - 1;
+            Application.UnLock();
         }
     }
 }

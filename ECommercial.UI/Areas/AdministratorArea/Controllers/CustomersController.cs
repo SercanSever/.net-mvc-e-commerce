@@ -13,12 +13,16 @@ namespace ECommercial.UI.Areas.AdministratorArea.Controllers
         private IUserService _userService;
         private IUserAddressService _userAddressService;
         private IOrderDetailService _orderDetailService;
+        private ICommentService _commentService;
+        private IContactService _contactService;
 
-        public CustomersController(IUserService userService, IUserAddressService userAddressService, IOrderDetailService orderDetailService)
+        public CustomersController(IUserService userService, IUserAddressService userAddressService, IOrderDetailService orderDetailService,ICommentService commentService,IContactService contactService)
         {
             _userService = userService;
             _userAddressService = userAddressService;
             _orderDetailService = orderDetailService;
+            _commentService = commentService;
+            _contactService = contactService;
         }
         [HttpGet]
         public ActionResult Index()
@@ -29,6 +33,13 @@ namespace ECommercial.UI.Areas.AdministratorArea.Controllers
         [HttpGet]
         public ActionResult UserDetails(int Id)
         {
+            var userCommentCount = _commentService.GetByUserId(Id).Data.Count;
+            ViewBag.userCommentCount = userCommentCount;
+            var userOrderCount = _orderDetailService.GetAllOrdersWithUserId(Id).Data.Count;
+            ViewBag.userOrderCount = userOrderCount;
+            var userMessageCount = _contactService.GetByUserId(Id).Data.Count;
+            ViewBag.userMessageCount = userMessageCount;
+
             var result = _userAddressService.GetByUserId(Id);
             var userResult = _userService.GetById(Id);
             return View(Tuple.Create<UserAddress, User>(result.Data, userResult.Data));
