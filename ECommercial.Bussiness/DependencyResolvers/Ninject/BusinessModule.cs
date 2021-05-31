@@ -53,6 +53,9 @@ namespace ECommercial.Bussiness.DependencyResolvers.Ninject
 
             Bind<IContactService>().To<ContactManager>();
             Bind<IContactDal>().To<EfContactDal>();
+
+            Bind<IEmailService>().To<EmailManager>();
+            Bind<IEmailDal>().To<EfEmailDal>();
         }
     }
 }

@@ -145,10 +145,12 @@ namespace ECommercial.UI.Areas.ECommercial.Controllers
                 contact.UserId = userId;
                 contact.UserName = user.Data.FirstName;
                 contact.UserEmail = user.Data.Email;
+                contact.MessageDate = DateTime.Now;
                 _contactService.Add(contact);
             }
             else
             {
+                contact.MessageDate = DateTime.Now;
                 _contactService.Add(contact);
             }
 

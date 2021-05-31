@@ -1,0 +1,47 @@
+﻿@using ECommercial.Entities.Concrete
+@model Contact
+@{
+    ViewBag.Title = "ReadMessage";
+    Layout = "~/Areas/AdministratorArea/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="card card-primary card-outline">
+                    <div class="card-header">
+                        <h3 class="card-title">Gelen Mesaj</h3>
+                    </div>
+                    @Html.HiddenFor(x => x.UserName)
+                    <!-- /.card-header -->
+                    <div class="card-body p-0">
+                        <div class="mailbox-read-info p-sm-4">
+                            <h5>Mesaj Konusu - @Model.Title</h5>
+                            <h6>
+                                from: @Model.UserEmail
+                                <span class="mailbox-read-time float-right">@Model.MessageDate</span>
+                            </h6>
+                        </div>
+                        <div class="mailbox-read-message p-sm-4">
+                            <p>
+                                @Model.Content
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="float-right">
+                            <a href="/AdministratorArea/Messages/Reply/@Model.ContactId" class="btn btn-default"><i class="fas fa-reply"></i>Cevapla</a>
+                        </div>
+                        <button type="button" class="btn btn-default"><i class="far fa-trash-alt"></i> Sil</button>
+                    </div>
+                    <!-- /.card-footer -->
+                </div>
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div><!-- /.container-fluid -->
+</section>

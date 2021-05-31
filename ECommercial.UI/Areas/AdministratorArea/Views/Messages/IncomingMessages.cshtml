@@ -1,0 +1,58 @@
+﻿@using ECommercial.Entities.Concrete
+@model List<Contact>
+@{
+    ViewBag.Title = "IncomingMessages";
+    Layout = "~/Areas/AdministratorArea/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="content">
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="card card-primary card-outline">
+                <div class="card-header">
+                    <h3 class="card-title">Gelen Mesajlar</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body p-0">
+                    <div class="table-responsive mailbox-messages">
+                        <table class="table table-hover table-striped">
+                            <tbody>
+                                @foreach (var message in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            <a class="btn btn-primary btn-sm" href="/AdministratorArea/Messages/ReadMessage/@message.ContactId">Mesajı Gör</a>
+                                        </td>
+                                        @if (message.UserId != null)
+                                        {
+                                            <td class="mailbox-name"><a href="/AdministratorArea/Customers/UserDetails/@message.UserId">@message.UserName</a></td>
+                                        }
+                                        else
+                                        {
+                                            <td class="mailbox-name">@message.UserName</td>
+                                        }
+                                        <td class="mailbox-subject">
+                                            <b>@message.Title</b>
+                                        </td>
+                                        <td class="mailbox-attachment"></td>
+                                        <td class="mailbox-date">@message.MessageDate</td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                        <!-- /.table -->
+                    </div>
+                    <!-- /.mail-box-messages -->
+                </div>
+                <!-- /.card-body -->
+
+            </div>
+            <!-- /.card -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</section>
+

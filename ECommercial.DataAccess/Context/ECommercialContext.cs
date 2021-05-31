@@ -24,5 +24,6 @@ namespace ECommercial.DataAccess.Context
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
         public DbSet<Contact> Contacts { get; set; }
+        public DbSet<Email> Emails { get; set; }
     }
 }

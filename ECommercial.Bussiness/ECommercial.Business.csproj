@@ -68,6 +68,7 @@
     <Compile Include="Abstract\ICategoryService.cs" />
     <Compile Include="Abstract\ICommentService.cs" />
     <Compile Include="Abstract\IContactService.cs" />
+    <Compile Include="Abstract\IEmailService.cs" />
     <Compile Include="Abstract\IOrderDetailService.cs" />
     <Compile Include="Abstract\IOrderService.cs" />
     <Compile Include="Abstract\IProductImageService.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="Concrete\CategoryManager.cs" />
     <Compile Include="Concrete\CommentManager.cs" />
     <Compile Include="Concrete\ContactManager.cs" />
+    <Compile Include="Concrete\EmailManager.cs" />
     <Compile Include="Concrete\OrderDetailManager.cs" />
     <Compile Include="Concrete\OrderManager.cs" />
     <Compile Include="Concrete\ProductImageManager.cs" />

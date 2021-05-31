@@ -14,12 +14,14 @@ namespace ECommercial.UI.Areas.AdministratorArea.Controllers
         private IProductService _productService;
         private IUserService _userService;
         private ICommentService _commentService;
+        private IOrderDetailService _orderDetailService;
 
-        public HomeController(IProductService productService, IUserService userService, ICommentService commentService)
+        public HomeController(IProductService productService, IUserService userService, ICommentService commentService, IOrderDetailService orderDetailService)
         {
             _productService = productService;
             _userService = userService;
             _commentService = commentService;
+            _orderDetailService = orderDetailService;
         }
 
         [HttpGet]
@@ -30,9 +32,10 @@ namespace ECommercial.UI.Areas.AdministratorArea.Controllers
             ViewBag.productCount = productCount;
             ViewBag.commentCount = commentCount;
 
-            var users = _userService.GetAll().Data.OrderByDescending(x => x.Id).ToList(); ;
+            var orderDetails = _orderDetailService.GetAll().Data.OrderByDescending(x => x.OrderId).ToList();
+            var users = _userService.GetAll().Data.OrderByDescending(x => x.Id).ToList();
             var products = _productService.GetProductWithImages().Data.OrderByDescending(x => x.ProductId).ToList();
-            return View(Tuple.Create<List<ProductWithImageDto>, List<User>>(products, users));
+            return View(Tuple.Create<List<ProductWithImageDto>, List<User>, List<OrderDetail>>(products, users, orderDetails));
         }
     }
 }

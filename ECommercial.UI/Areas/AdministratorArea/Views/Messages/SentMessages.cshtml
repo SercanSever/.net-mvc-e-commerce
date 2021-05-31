@@ -1,0 +1,55 @@
+﻿@using ECommercial.Entities.Concrete
+@model List<Email>
+@{
+    ViewBag.Title = "SentMessages";
+    Layout = "~/Areas/AdministratorArea/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<section class="content">
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="card card-primary card-outline">
+                <div class="card-header">
+                    <h3 class="card-title">Gönderilen Mesajlar</h3>
+                </div>
+                <!-- ./card-header -->
+                <div class="card-body">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Tarih</th>
+                                <th>Alıcı</th>
+                                <th>Başlık</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var email in Model)
+                            {
+                                <tr data-widget="expandable-table" aria-expanded="false">
+                                    <td>@email.EmailDate</td>
+                                    <td>@email.UserEmail</td>
+                                    <td>@email.Title</td>
+                                </tr>
+                                <tr class="expandable-body d-none">
+                                    <td colspan="3">
+                                        <p style="display: none;">
+                                            @email.Content
+                                        </p>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</section>
+

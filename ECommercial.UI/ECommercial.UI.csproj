@@ -135,6 +135,7 @@
     <Compile Include="Areas\AdministratorArea\Controllers\CommentsController.cs" />
     <Compile Include="Areas\AdministratorArea\Controllers\CustomersController.cs" />
     <Compile Include="Areas\AdministratorArea\Controllers\HomeController.cs" />
+    <Compile Include="Areas\AdministratorArea\Controllers\MessagesController.cs" />
     <Compile Include="Areas\AdministratorArea\Controllers\ProductsController.cs" />
     <Compile Include="Areas\AdministratorArea\Controllers\SalesController.cs" />
     <Compile Include="Areas\AdministratorArea\Data\CategoryListViewModel.cs" />
@@ -2592,6 +2593,10 @@
     <Content Include="Areas\AdministratorArea\Views\Customers\ShoppingHistory.cshtml" />
     <Content Include="Areas\AdministratorArea\Views\Sales\Index.cshtml" />
     <Content Include="Areas\ECommercial\Views\Users\Contact.cshtml" />
+    <Content Include="Areas\AdministratorArea\Views\Messages\IncomingMessages.cshtml" />
+    <Content Include="Areas\AdministratorArea\Views\Messages\ReadMessage.cshtml" />
+    <Content Include="Areas\AdministratorArea\Views\Messages\Reply.cshtml" />
+    <Content Include="Areas\AdministratorArea\Views\Messages\SentMessages.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

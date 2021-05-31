@@ -29,5 +29,10 @@ namespace ECommercial.Bussiness.Concrete
         {
             return new SuccessDataResult<List<Contact>>(_contactDal.GetAll());
         }
+
+        public IDataResult<Contact> GetById(int Id)
+        {
+            return new SuccessDataResult<Contact>(_contactDal.Get(x => x.ContactId == Id));
+        }
     }
 }

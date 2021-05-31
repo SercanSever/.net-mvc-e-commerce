@@ -8,10 +8,9 @@ using System.Threading.Tasks;
 
 namespace ECommercial.Bussiness.Abstract
 {
-    public interface IContactService
+    public interface IEmailService
     {
-        IResult Add(Contact contact);
-        IDataResult<List<Contact>> GetAll();
-        IDataResult<Contact> GetById(int Id);
+        IResult Add(Email email);
+        IDataResult<List<Email>> GetAll();
     }
 }

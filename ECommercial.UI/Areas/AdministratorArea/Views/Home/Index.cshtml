@@ -1,6 +1,6 @@
 ﻿@using ECommercial.Entities.Dtos
 @using ECommercial.Entities.Concrete
-@model Tuple<List<ProductWithImageDto>, List<User>>
+@model Tuple<List<ProductWithImageDto>, List<User>,List<OrderDetail>>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/AdministratorArea/Views/Shared/_AdminLayout.cshtml";
@@ -326,8 +326,7 @@
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer clearfix">
-                        <a href="javascript:void(0)" class="btn btn-sm btn-info float-left">Place New Order</a>
-                        <a href="javascript:void(0)" class="btn btn-sm btn-secondary float-right">View All Orders</a>
+                        <a href="/AdministratorArea/Sales/Index" class="btn btn-sm btn-secondary float-right">Tüm Satışları Göre</a>
                     </div>
                     <!-- /.card-footer -->
                 </div>                <!-- /.card -->
