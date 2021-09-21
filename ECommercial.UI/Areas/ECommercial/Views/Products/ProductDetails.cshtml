@@ -57,7 +57,7 @@
                                         <h4>Adet:</h4>
                                         <div class="qty">
                                             <button type="button" class="btn-minus"><i class="fa fa-minus"></i></button>
-                                            @Html.TextBoxFor(x => x.Item1.OrderQuantity)
+                                            @Html.TextBoxFor(x => x.Item1.OrderQuantity, new { @Value="0"})
                                             <button type="button" class="btn-plus"><i class="fa fa-plus"></i></button>
                                         </div>
                                     </div>
@@ -172,13 +172,7 @@
                             <div class="product-item">
                                 <div class="product-title">
                                     <a href="#">@products.Name</a>
-                                    <div class="ratting">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
+                                 
                                 </div>
                                 <div class="product-image">
                                     <a href="product-detail.html">

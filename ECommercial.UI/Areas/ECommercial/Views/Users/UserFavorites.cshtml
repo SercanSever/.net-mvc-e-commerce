@@ -19,27 +19,19 @@
                             <div class="product-item">
                                 <div class="product-title">
                                     <a href="#">@userFavorites.Name</a>
-                                    <div class="ratting">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
                                 </div>
                                 <div class="product-image">
                                     <a href="product-detail.html">
                                         <img src="~/Uploads/@userFavorites.Image" alt="Product Image">
                                     </a>
                                     <div class="product-action">
-                                        <a href="#"><i class="fa fa-cart-plus"></i></a>
                                         <a href="/ECommercial/Users/RemoveFavorite/@userFavorites.ProductId"><i class="fa fa-heart-broken"></i></a>
                                         <a href="/ECommercial/Products/ProductDetails/@userFavorites.ProductId"><i class="fa fa-search"></i></a>
                                     </div>
                                 </div>
                                 <div class="product-price">
                                     <h3>@userFavorites.UnitPrice<span>₺</span></h3>
-                                    <a class="btn btn-sm mt-sm-1" href=""><i class="fa fa-shopping-cart"></i>Sepete Ekle</a>
+                                    <a class="btn btn-sm mt-sm-1" href="/ECommercial/Products/ProductDetails/@userFavorites.ProductId" ><i class="fa fa-shopping-cart"></i>İncele</a>
                                 </div>
                             </div>
                         </div>

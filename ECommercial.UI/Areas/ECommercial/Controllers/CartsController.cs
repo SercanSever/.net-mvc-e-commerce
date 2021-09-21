@@ -60,7 +60,7 @@ namespace ECommercial.UI.Areas.ECommercial.Controllers
         {
             var cartList = _cartService.GetCart();
             var userId = Convert.ToInt32(Session["Id"]);
-            var result = _userAddressService.GetById(userId);
+            var result = _userAddressService.GetByUserId(userId);
             return View(Tuple.Create<UserAddress, List<Product>>(result.Data, cartList.Data));
         }
         [HttpGet]

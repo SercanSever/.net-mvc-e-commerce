@@ -70,7 +70,7 @@ namespace ECommercial.UI.Areas.AdministratorArea.Controllers
             smtp.EnableSsl = true;
 
             smtp.Send(mailMessage);
-            return View();
+            return RedirectToAction("SentMessages");
         }
         [HttpGet]
         public ActionResult SentMessages()
